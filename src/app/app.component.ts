@@ -42,12 +42,14 @@ export class AppComponent {
           value: "Cel 2"
         },
         {
-          type: "text",
+          type: "bold",
           value: "Cel 3"
         },
         {
-          type: "text",
-          value: "Cel 4"
+          type: "image",
+          value: "https://cdn.pixabay.com/photo/2020/08/25/11/32/monstera-5516509__340.png",
+          width: 100,
+          height: 100
         }
       ],
       [

@@ -6,7 +6,11 @@
   </thead>
   <tbody>
     <tr *ngFor="let item of data?.items">
-      <td *ngFor="let cel of item">{{cel.value}}</td>
+      <ng-container *ngFor="let cel of item">
+        <td *ngIf="cel.type=='text'">{{cel.value}}</td>
+        <td *ngIf="cel.type=='bold'"><b>{{cel.value}}</b></td>
+        <td *ngIf="cel.type=='image'"><img [src]="cel.value" [width]="cel.width" [height]="cel.height" /></td>
+      </ng-container>
     </tr>
   </tbody>
   <tfoot>
