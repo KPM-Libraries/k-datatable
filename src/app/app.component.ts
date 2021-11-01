@@ -72,8 +72,8 @@ export class AppComponent {
           content: "Cel 6"
         },
         {
-          type: "text",
-          content: "Cel 7"
+          type: "list",
+          content: ["Hello", "World"]
         },
         {
           type: "text",

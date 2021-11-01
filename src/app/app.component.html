@@ -12,6 +12,11 @@
         <td *ngIf="cel.type=='image'"><img [src]="cel?.content?.src" [width]="cel?.content?.width"
             [height]="cel?.content?.height" /></td>
         <td *ngIf="cel.type=='badge'"><span [class]="cel.style">{{cel.content}}</span></td>
+        <td *ngIf="cel.type=='list'">
+          <ul>
+            <li *ngFor="let li of cel.content">{{li}}</li>
+          </ul>
+        </td>
       </ng-container>
     </tr>
   </tbody>
