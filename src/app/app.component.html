@@ -7,9 +7,10 @@
   <tbody>
     <tr *ngFor="let item of data?.items">
       <ng-container *ngFor="let cel of item">
-        <td *ngIf="cel.type=='text'">{{cel.value}}</td>
-        <td *ngIf="cel.type=='bold'"><b>{{cel.value}}</b></td>
-        <td *ngIf="cel.type=='image'"><img [src]="cel.value" [width]="cel.width" [height]="cel.height" /></td>
+        <td *ngIf="cel.type=='text'">{{cel.content}}</td>
+        <td *ngIf="cel.type=='bold'"><b>{{cel.content}}</b></td>
+        <td *ngIf="cel.type=='image'"><img [src]="cel?.content?.src" [width]="cel?.content?.width"
+            [height]="cel?.content?.height" /></td>
       </ng-container>
     </tr>
   </tbody>

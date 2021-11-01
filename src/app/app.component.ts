@@ -1,12 +1,19 @@
 import { Component } from '@angular/core';
-
+interface DataTable {
+  addData: boolean,
+  header: Array<{ name: string, order: boolean, filter: boolean }>,
+  footer?: Array<string>,
+  items: Array<Array<{ type: string, content: any }>>
+}
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
+
 export class AppComponent {
-  data = {
+
+  data: DataTable = {
     addData: true,
     header: [
       {
@@ -35,39 +42,41 @@ export class AppComponent {
       [
         {
           type: "text",
-          value: "Cel 1"
+          content: "Cel 1"
         },
         {
           type: "text",
-          value: "Cel 2"
+          content: "Cel 2"
         },
         {
           type: "bold",
-          value: "Cel 3"
+          content: "Cel 3"
         },
         {
           type: "image",
-          value: "https://cdn.pixabay.com/photo/2020/08/25/11/32/monstera-5516509__340.png",
-          width: 100,
-          height: 100
+          content: {
+            src: "https://cdn.pixabay.com/photo/2020/08/25/11/32/monstera-5516509__340.png",
+            width: 100,
+            height: 100
+          }
         }
       ],
       [
         {
           type: "text",
-          value: "Cel 5"
+          content: "Cel 5"
         },
         {
           type: "text",
-          value: "Cel 6"
+          content: "Cel 6"
         },
         {
           type: "text",
-          value: "Cel 7"
+          content: "Cel 7"
         },
         {
           type: "text",
-          value: "Cel 8"
+          content: "Cel 8"
         }
       ]
     ]
