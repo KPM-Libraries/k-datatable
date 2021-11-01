@@ -1,0 +1,17 @@
+<table *ngIf="data">
+  <thead>
+    <tr>
+      <th *ngFor="let header of data?.header">{{header.name}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of data?.items">
+      <td *ngFor="let cel of item">{{cel.value}}</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td *ngFor="let footer of data?.footer">{{footer}}</td>
+    </tr>
+  </tfoot>
+</table>
