@@ -11,6 +11,7 @@
         <td *ngIf="cel.type=='bold'"><b>{{cel.content}}</b></td>
         <td *ngIf="cel.type=='image'"><img [src]="cel?.content?.src" [width]="cel?.content?.width"
             [height]="cel?.content?.height" /></td>
+        <td *ngIf="cel.type=='badge'"><span [class]="cel.style">{{cel.content}}</span></td>
       </ng-container>
     </tr>
   </tbody>

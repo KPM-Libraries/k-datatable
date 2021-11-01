@@ -3,7 +3,7 @@ interface DataTable {
   addData: boolean,
   header: Array<{ name: string, order: boolean, filter: boolean }>,
   footer?: Array<string>,
-  items: Array<Array<{ type: string, content: any }>>
+  items: Array<Array<{ type: string, content: any, style?: string }>>
 }
 @Component({
   selector: 'app-root',
@@ -45,8 +45,9 @@ export class AppComponent {
           content: "Cel 1"
         },
         {
-          type: "text",
-          content: "Cel 2"
+          type: "badge",
+          content: "Cel 2",
+          style: "k-color-danger"
         },
         {
           type: "bold",

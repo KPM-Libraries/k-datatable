@@ -9,3 +9,15 @@ table, td, th{
     vertical-align: middle;
     padding: 0.2rem;
 }
+
+span{
+    padding: 0.5rem;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+    border-radius: 10px;
+}
+
+.k-color-danger{
+    background-color: brown;
+    color: white;
+}
