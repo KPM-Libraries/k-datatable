@@ -48,8 +48,8 @@ export class AppComponent {
           content: "Cel 1"
         },
         {
-          type: "badge",
-          content: "Cel 2",
+          type: "text",
+          content: 5,
           style: "k-bg-danger"
         },
         {
@@ -72,7 +72,25 @@ export class AppComponent {
         },
         {
           type: "text",
-          content: "Cel 6"
+          content: 8
+        },
+        {
+          type: "list",
+          content: ["Hello", "World"]
+        },
+        {
+          type: "text",
+          content: "Cel 8"
+        }
+      ],
+      [
+        {
+          type: "text",
+          content: "Cel 0"
+        },
+        {
+          type: "text",
+          content: 1
         },
         {
           type: "list",
@@ -116,6 +134,19 @@ export class AppComponent {
       if (item.toLowerCase().includes(text))
         return true
     return false
+  }
+
+  orderASC(index: number): void {
+    this.data.items = this.data?.items.sort((elt1: any, elt2: any): number => {
+      if (typeof elt1[index].content != typeof elt2[index].content)
+        return -1
+      switch (typeof elt1[index].content) {
+        case 'string':
+        case 'number':
+          return elt1[index].content == elt2[index].content ? 0 : elt1[index].content < elt2[index].content ? -1 : 1
+      }
+      return -1
+    })
   }
 
 }

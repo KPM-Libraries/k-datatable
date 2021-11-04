@@ -1,7 +1,8 @@
 <table *ngIf="data">
   <thead>
     <tr>
-      <th *ngFor="let header of data?.header">{{header?.name}}</th>
+      <th *ngFor="let header of data?.header; let i=index">{{header?.name}}<i class="icon icon-arrow-bottom"
+          (click)="orderASC(i)"></i><i class="icon icon-arrow-top"></i></th>
     </tr>
     <tr>
       <td *ngFor="let header of data?.header; let i=index">

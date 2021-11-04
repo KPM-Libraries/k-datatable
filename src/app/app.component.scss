@@ -13,6 +13,12 @@ table, td, th{
     }
 }
 
+th{    
+    i{
+        cursor: pointer;
+    }
+}
+
 span{
     padding: 0.5rem;
     padding-top: 0.2rem;
@@ -239,4 +245,23 @@ span{
 
 .k-border-light{
     border: solid 1px #FFFFFF;
+}
+
+
+//icons
+.icon-arrow-bottom {
+  mask: url("/assets/icons/arrow.svg");
+}
+
+.icon-arrow-top {
+  mask: url("/assets/icons/arrow.svg");
+  transform: scaleY(-1);
+}
+
+.icon {
+    display: inline-block;
+    background: #000000;  
+    mask-size: 100% 100%;
+    width: 10px;
+    height: 10px;  
 }
