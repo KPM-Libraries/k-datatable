@@ -1,5 +1,4 @@
-import { isNgTemplate } from '@angular/compiler';
-import { Component, IterableDiffers } from '@angular/core';
+import { Component } from '@angular/core';
 interface DataTable {
   addData: boolean,
   type?: string,
@@ -53,16 +52,12 @@ export class AppComponent {
           style: "k-bg-danger"
         },
         {
-          type: "bold",
-          content: "Cel 3"
+          type: "list",
+          content: ["rtas", "World"]
         },
         {
-          type: "image",
-          content: {
-            src: "https://cdn.pixabay.com/photo/2020/08/25/11/32/monstera-5516509__340.png",
-            width: 100,
-            height: 100
-          }
+          type: "date",
+          content: new Date('4/7/2025').toLocaleDateString()
         }
       ],
       [
@@ -76,11 +71,11 @@ export class AppComponent {
         },
         {
           type: "list",
-          content: ["Hello", "World"]
+          content: ["aello"]
         },
         {
-          type: "text",
-          content: "Cel 8"
+          type: "date",
+          content: new Date('5/7/2019').toLocaleDateString()
         }
       ],
       [
@@ -97,14 +92,21 @@ export class AppComponent {
           content: ["Hello", "World"]
         },
         {
-          type: "text",
-          content: "Cel 8"
+          type: "date",
+          content: new Date().toLocaleDateString()
         }
       ]
     ]
   }
 
   filterTable = new Array(this.data?.header?.length)
+
+  lastOrderStatus = {
+    index: -1,
+    type: '',
+    ascOrDescTable: new Array<number>(),
+    items: [...this.data.items]
+  }
 
   filterAccepted(item: any): Boolean {
     for (let i = 0; i < this.filterTable.length; i++)
@@ -136,17 +138,29 @@ export class AppComponent {
     return false
   }
 
-  orderASC(index: number): void {
-    this.data.items = this.data?.items.sort((elt1: any, elt2: any): number => {
-      if (typeof elt1[index].content != typeof elt2[index].content)
-        return -1
-      switch (typeof elt1[index].content) {
-        case 'string':
-        case 'number':
-          return elt1[index].content == elt2[index].content ? 0 : elt1[index].content < elt2[index].content ? -1 : 1
-      }
-      return -1
-    })
+  order(index: number, type: string): void {
+    if (index != this.lastOrderStatus.index || type != this.lastOrderStatus.type) {
+      this.lastOrderStatus.index = index
+      this.lastOrderStatus.type = type
+      this.lastOrderStatus.ascOrDescTable = type == 'ASC' ? [-1, 1] : type == 'DESC' ? [1, -1] : []
+      if (this.lastOrderStatus.ascOrDescTable.length > 0)
+        this.data.items = this.data?.items.sort((elt1: any, elt2: any): number => {
+          if (typeof elt1[index]?.content != typeof elt2[index]?.content)
+            return -1
+          switch (elt1[index]?.type) {
+            case 'date':
+              return (new Date(elt1[index]?.content).getTime() - new Date(elt2[index]?.content).getTime()) * this.lastOrderStatus.ascOrDescTable[1]
+            case 'list':
+              return elt1[index]?.content.join('').toLowerCase() == elt2[index]?.content.join('').toLowerCase() ? 0 : elt1[index]?.content.join('').toLowerCase() < elt2[index]?.content.join('').toLowerCase() ? this.lastOrderStatus.ascOrDescTable[0] : this.lastOrderStatus.ascOrDescTable[1]
+            default: //all other types
+              return elt1[index]?.content.toString().toLowerCase() == elt2[index]?.content.toString().toLowerCase() ? 0 : elt1[index]?.content.toString().toLowerCase() < elt2[index]?.content.toString().toLowerCase() ? this.lastOrderStatus.ascOrDescTable[0] : this.lastOrderStatus.ascOrDescTable[1]
+          }
+        })
+    } else {
+      this.lastOrderStatus.index = -1
+      this.lastOrderStatus.type = ''
+      this.data.items = [...this.lastOrderStatus.items]
+    }
   }
 
 }
