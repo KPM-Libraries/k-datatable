@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 interface DataTable {
   addData: boolean,
+  type?: string,
+  style?: string,
   header: Array<{ name: string, order: boolean, filter: boolean }>,
   footer?: Array<string>,
   items: Array<Array<{ type: string, content: any, style?: string }>>
@@ -47,7 +49,7 @@ export class AppComponent {
         {
           type: "badge",
           content: "Cel 2",
-          style: "k-color-danger"
+          style: "k-bg-danger"
         },
         {
           type: "bold",
@@ -81,6 +83,12 @@ export class AppComponent {
         }
       ]
     ]
+  }
+
+  filterTable = new Array(this.data?.header?.length)
+
+  filter(index: number) {
+    console.log(this.filterTable[index])
   }
 
 }

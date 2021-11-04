@@ -1,7 +1,12 @@
 <table *ngIf="data">
   <thead>
     <tr>
-      <th *ngFor="let header of data?.header">{{header.name}}</th>
+      <th *ngFor="let header of data?.header">{{header?.name}}</th>
+    </tr>
+    <tr>
+      <td *ngFor="let header of data?.header; let i=index">
+        <input *ngIf="header?.filter" type="text" [(ngModel)]="filterTable[i]" (input)="filter(i)" />
+      </td>
     </tr>
   </thead>
   <tbody>
@@ -20,7 +25,7 @@
       </ng-container>
     </tr>
   </tbody>
-  <tfoot>
+  <tfoot *ngIf="data.footer">
     <tr>
       <td *ngFor="let footer of data?.footer">{{footer}}</td>
     </tr>
