@@ -5,23 +5,25 @@
     </tr>
     <tr>
       <td *ngFor="let header of data?.header; let i=index">
-        <input *ngIf="header?.filter" type="text" [(ngModel)]="filterTable[i]" (input)="filter(i)" />
+        <input *ngIf="header?.filter" type="text" [(ngModel)]="filterTable[i]" />
       </td>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let item of data?.items">
-      <ng-container *ngFor="let cel of item">
-        <td *ngIf="cel.type=='text'">{{cel.content}}</td>
-        <td *ngIf="cel.type=='bold'"><b>{{cel.content}}</b></td>
-        <td *ngIf="cel.type=='image'"><img [src]="cel?.content?.src" [width]="cel?.content?.width"
-            [height]="cel?.content?.height" /></td>
-        <td *ngIf="cel.type=='badge'"><span [class]="cel.style">{{cel.content}}</span></td>
-        <td *ngIf="cel.type=='list'">
-          <ul>
-            <li *ngFor="let li of cel.content">{{li}}</li>
-          </ul>
-        </td>
+      <ng-container *ngIf="filterAccepted(item)">
+        <ng-container *ngFor="let cel of item">
+          <td *ngIf="cel.type=='text'">{{cel.content}}</td>
+          <td *ngIf="cel.type=='bold'"><b>{{cel.content}}</b></td>
+          <td *ngIf="cel.type=='image'"><img [src]="cel?.content?.src" [width]="cel?.content?.width"
+              [height]="cel?.content?.height" /></td>
+          <td *ngIf="cel.type=='badge'"><span [class]="cel.style">{{cel.content}}</span></td>
+          <td *ngIf="cel.type=='list'">
+            <ul>
+              <li *ngFor="let li of cel.content">{{li}}</li>
+            </ul>
+          </td>
+        </ng-container>
       </ng-container>
     </tr>
   </tbody>

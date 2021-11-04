@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { isNgTemplate } from '@angular/compiler';
+import { Component, IterableDiffers } from '@angular/core';
 interface DataTable {
   addData: boolean,
   type?: string,
@@ -87,8 +88,34 @@ export class AppComponent {
 
   filterTable = new Array(this.data?.header?.length)
 
-  filter(index: number) {
-    console.log(this.filterTable[index])
+  filterAccepted(item: any): Boolean {
+    for (let i = 0; i < this.filterTable.length; i++)
+      if (this.filterTable[i] != null && this.filterTable[i] != '') {
+        switch (item[i]?.type) {
+          case 'text':
+          case 'bold':
+          case 'badge':
+            if (!item[i]?.content.toLowerCase().includes(this.filterTable[i].toLowerCase()))
+              return false
+            break
+          case 'list':
+            if (!this.filterInsideList(item[i]?.content, this.filterTable[i].toLowerCase()))
+              return false
+            break
+          case 'image':
+            if (!item[i]?.content?.src.includes(this.filterTable[i]))
+              return false
+            break
+        }
+      }
+    return true
+  }
+
+  filterInsideList(list: Array<any>, text: string): Boolean {
+    for (let item of list)
+      if (item.toLowerCase().includes(text))
+        return true
+    return false
   }
 
 }
