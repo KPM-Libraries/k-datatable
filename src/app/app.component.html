@@ -14,7 +14,8 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let item of data?.items">
+    <tr
+      *ngFor="let item of data?.items | slice: (pagination.current-1)*pagination.elementsPerPage : pagination.current*pagination.elementsPerPage">
       <ng-container *ngIf="filterAccepted(item)">
         <ng-container *ngFor="let cel of item">
           <td *ngIf="cel.type=='text'">{{cel.content}}</td>
@@ -32,9 +33,20 @@
       </ng-container>
     </tr>
   </tbody>
-  <tfoot *ngIf="data.footer">
-    <tr>
+  <tfoot>
+    <tr *ngIf="data.footer">
       <td *ngFor="let footer of data?.footer">{{footer}}</td>
+    </tr>
+    <tr>
+      <td [attr.colspan]="data.header.length" class="pagination">
+        <i class="icon icon-arrow-left"
+          (click)="pagination.current = pagination.current == 1 ? pagination.total : pagination.current - 1"></i>
+        <input type="text" class="mx-1" [(ngModel)]="pagination.current"
+          (input)="pagination.current = pagination.current > pagination.total ? pagination.total : pagination.current < 1 ? 1 : pagination.current" />
+        / {{pagination.total}}
+        <i class="icon icon-arrow-right"
+          (click)="pagination.current = pagination.current == pagination.total ? 1 : pagination.current + 1"></i>
+      </td>
     </tr>
   </tfoot>
 </table>

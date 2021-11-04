@@ -108,6 +108,14 @@ export class AppComponent {
     items: [...this.data.items]
   }
 
+  pagination = {
+    elementsPerPage: 2,
+    current: 1,
+    total: Math.ceil(this.data.items.length / 2)
+  }
+
+  ok(i: number) { }
+
   filterAccepted(item: any): Boolean {
     for (let i = 0; i < this.filterTable.length; i++)
       if (this.filterTable[i] != null && this.filterTable[i] != '') {

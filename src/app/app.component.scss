@@ -258,6 +258,16 @@ span{
   transform: scaleY(-1);
 }
 
+.icon-arrow-left {
+  mask: url("/assets/icons/arrow.svg");
+  transform: rotate(90deg);
+}
+
+.icon-arrow-right {
+  mask: url("/assets/icons/arrow.svg");
+  transform: rotate(-90deg);
+}
+
 .icon {
     display: inline-block;
     background: #AAAAAA;  
@@ -268,4 +278,15 @@ span{
 
 .icon-active {
     background: #000000;
+}
+
+.pagination{
+    text-align: right;
+    input{
+        width: 20px;
+        max-width: 60px;
+    }
+    i{
+        cursor: pointer;
+    }
 }
