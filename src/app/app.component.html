@@ -2,7 +2,10 @@
   <thead>
     <tr>
       <th *ngFor="let header of data?.header; let i=index">{{header?.name}}<i class="icon icon-arrow-bottom"
-          (click)="order(i, 'DESC')"></i><i class="icon icon-arrow-top" (click)="order(i, 'ASC')"></i></th>
+          [ngClass]="{'icon-active': lastOrderStatus.index==i && lastOrderStatus.type =='DESC'}"
+          (click)="order(i, 'DESC')"></i><i class="icon icon-arrow-top"
+          [ngClass]="{'icon-active': lastOrderStatus.index==i && lastOrderStatus.type =='ASC'}"
+          (click)="order(i, 'ASC')"></i></th>
     </tr>
     <tr>
       <td *ngFor="let header of data?.header; let i=index">
