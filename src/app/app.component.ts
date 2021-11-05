@@ -32,9 +32,19 @@ export class AppComponent implements OnInit {
           {
             value: [
               {
-                style: "k-bg-fuchsia",
+                style: "fa fa-file k-color-success",
+                title: "Ouvrir",
+                event: "update"
+              },
+              {
+                style: "fa fa-edit k-color-blue",
                 title: "Modifier",
                 event: "update"
+              },
+              {
+                style: "fa fa-trash k-color-danger",
+                title: "Supprimer",
+                event: "delete"
               }
             ]
           }
@@ -48,13 +58,13 @@ export class AppComponent implements OnInit {
     header: [
       {
         name: "#",
-        type: "text",
+        type: "number",
         order: true,
         filter: true
       },
       {
         name: "Nom",
-        type: "text",
+        type: "bold",
         order: true,
         filter: true
       },
@@ -77,8 +87,8 @@ export class AppComponent implements OnInit {
         filter: true
       },
       {
-        name: "Actions",
-        type: "buttons",
+        name: "",
+        type: "mini-buttons",
         order: false,
         filter: false
       }

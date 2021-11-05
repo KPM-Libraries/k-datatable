@@ -34,7 +34,8 @@
             </tr>
             <tr>
                 <td *ngFor="let header of data?.header; let i=index">
-                    <input *ngIf="header?.filter" type="text" [(ngModel)]="filterTable[i]" (input)="filter()" />
+                    <input *ngIf="header?.filter" type="text" placeholder="{{header?.name}}"
+                        [(ngModel)]="filterTable[i]" (input)="filter()" />
                 </td>
             </tr>
         </thead>
@@ -65,7 +66,8 @@
                             <a *ngFor="let button of field?.value" (click)="emitEvent({
                             event: button.event,
                             id: item.id
-                          })"><i [class]="button?.style" [title]="button?.title"></i></a>
+                          })"><i [class]="button?.style" [title]="button?.title"></i>&nbsp;&nbsp;
+                            </a>
                         </td>
                         <td *ngIf="data.header[j].type=='buttons'">
                             <button *ngFor="let button of field?.value" [class]="button?.style" (click)="emitEvent({
