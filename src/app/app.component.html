@@ -1,9 +1,9 @@
 <table *ngIf="data">
   <thead>
     <tr>
-      <th *ngFor="let header of data?.header; let i=index">{{header?.name}}<i class="icon icon-arrow-bottom"
+      <th *ngFor="let header of data?.header; let i=index">{{header?.name}}<i class="icon icon-arrow-bottom order-asc"
           [ngClass]="{'icon-active': orderStatus.index==i && orderStatus.type =='DESC'}"
-          (click)="order(i, 'DESC')"></i><i class="icon icon-arrow-top"
+          (click)="order(i, 'DESC')"></i><i class="icon icon-arrow-top order-desc"
           [ngClass]="{'icon-active': orderStatus.index==i && orderStatus.type =='ASC'}" (click)="order(i, 'ASC')"></i>
       </th>
     </tr>
@@ -15,16 +15,16 @@
   </thead>
   <tbody>
     <tr
-      *ngFor="let item of data?.items | slice: (pagination.current-1)*pagination.elementsPerPage : pagination.current*pagination.elementsPerPage">
+      *ngFor="let item of data?.items | slice: (pagination.current-1)*pagination.elementsPerPage : pagination.current*pagination.elementsPerPage; let i = index">
       <ng-container>
         <ng-container *ngFor="let cel of item">
-          <td *ngIf="cel.type=='text'">{{cel.content}}</td>
-          <td *ngIf="cel.type=='date'">{{cel.content}}</td>
-          <td *ngIf="cel.type=='bold'"><b>{{cel.content}}</b></td>
-          <td *ngIf="cel.type=='image'"><img [src]="cel?.content?.src" [width]="cel?.content?.width"
-              [height]="cel?.content?.height" /></td>
-          <td *ngIf="cel.type=='badge'"><span [class]="cel.style">{{cel.content}}</span></td>
-          <td *ngIf="cel.type=='list'">
+          <td *ngIf="data.header[i].type=='text'">{{cel.content}}</td>
+          <td *ngIf="data.header[i].type=='date'">{{cel.content}}</td>
+          <td *ngIf="data.header[i].type=='bold'"><b>{{cel.content}}</b></td>
+          <td *ngIf="data.header[i].type=='image'"><img [src]="cel?.src" [width]="cel?.width" [height]="cel?.height" />
+          </td>
+          <td *ngIf="data.header[i].type=='badge'"><span [class]="cel.style">{{cel.content}}</span></td>
+          <td *ngIf="data.header[i].type=='list'">
             <ul>
               <li *ngFor="let li of cel.content">{{li}}</li>
             </ul>

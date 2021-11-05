@@ -3,9 +3,9 @@ interface DataTable {
   addData: boolean,
   type?: string,
   style?: string,
-  header: Array<{ name: string, order: boolean, filter: boolean }>,
+  header: Array<{ name: string, type: string, order: boolean, filter: boolean }>,
   footer?: Array<string>,
-  items: Array<Array<{ type: string, content: any, style?: string }>>
+  items: Array<Array<{ content: any, style?: string, src?: string, width?: string, height?: string, condition?: string }>>
 }
 @Component({
   selector: 'app-root',
@@ -20,21 +20,25 @@ export class AppComponent {
     header: [
       {
         name: "Header 1",
+        type: "text",
         order: true,
         filter: true
       },
       {
         name: "Header 2",
+        type: "text",
         order: true,
         filter: false
       },
       {
         name: "Header 3",
+        type: "list",
         order: false,
         filter: true
       },
       {
         name: "Header 4",
+        type: "date",
         order: false,
         filter: false
       }
@@ -43,56 +47,44 @@ export class AppComponent {
     items: [
       [
         {
-          type: "text",
           content: "Cel 12"
         },
         {
-          type: "text",
           content: 5,
           style: "k-bg-danger"
         },
         {
-          type: "list",
           content: ["rtas", "World"]
         },
         {
-          type: "date",
           content: new Date('4/7/2025').toLocaleDateString()
         }
       ],
       [
         {
-          type: "text",
           content: "Cel 5"
         },
         {
-          type: "text",
           content: 8
         },
         {
-          type: "list",
           content: ["aello"]
         },
         {
-          type: "date",
           content: new Date('5/7/2019').toLocaleDateString()
         }
       ],
       [
         {
-          type: "text",
           content: "Cel 1"
         },
         {
-          type: "text",
           content: 1
         },
         {
-          type: "list",
           content: ["Hello", "World"]
         },
         {
-          type: "date",
           content: new Date().toLocaleDateString()
         }
       ]
@@ -134,7 +126,7 @@ export class AppComponent {
   filterAccepted(item: any): Boolean {
     for (let i = 0; i < this.filterTable.length; i++)
       if (this.filterTable[i] != null && this.filterTable[i] != '') {
-        switch (item[i]?.type) {
+        switch (this.data.header[i]?.type) {
           case 'text':
           case 'bold':
           case 'badge':
@@ -171,7 +163,7 @@ export class AppComponent {
           console.log(55555)
           if (typeof elt1[index]?.content != typeof elt2[index]?.content)
             return -1
-          switch (elt1[index]?.type) {
+          switch (this.data.header[index]?.type) {
             case 'date':
               return (new Date(elt1[index]?.content).getTime() - new Date(elt2[index]?.content).getTime()) * this.orderStatus.ascOrDescTable[1]
             case 'list':

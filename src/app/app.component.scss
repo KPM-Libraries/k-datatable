@@ -2,21 +2,38 @@
     font-size: 18px;
 }
 
+table{
+    width: 100%;
+    ul{
+        padding-left: 20px;
+    }
+    input{
+        width: 95%;
+    }
+    th{
+        position: relative;        
+        i{
+            cursor: pointer;
+        }
+        .order-asc{
+            position: absolute;
+            right: 5px;
+            bottom: 4px;
+        }
+        .order-desc{
+            position: absolute;
+            right: 5px;
+            top: 4px;
+        }
+    }
+}
+
 table, td, th{
     border: 1px solid rgba(0, 0, 0, 0.11);
     border-collapse: collapse;
     text-align: center;
     vertical-align: middle;
     padding: 0.2rem;
-    ul{
-        padding-left: 20px;
-    }
-}
-
-th{    
-    i{
-        cursor: pointer;
-    }
 }
 
 span{
