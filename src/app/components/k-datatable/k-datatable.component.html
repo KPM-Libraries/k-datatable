@@ -1,4 +1,4 @@
-<table *ngIf="data">
+<table *ngIf="data && filterTable && startedItems && orderStatus && pagination">
     <thead>
         <tr>
             <th *ngFor="let header of data?.header; let i=index">{{header?.name}}<i
@@ -17,7 +17,7 @@
     </thead>
     <tbody>
         <tr
-            *ngFor="let item of data?.items | slice: (pagination.current-1)*pagination.elementsPerPage : pagination.current*pagination.elementsPerPage; let i = index">
+            *ngFor="let item of data?.items | slice: (pagination.current-1)*pagination.elementsPerPage : pagination.elementsPerPage != -1 ? pagination.current*pagination.elementsPerPage : data.items.length; let i = index">
             <ng-container *ngFor="let field of item?.data; let j=index">
                 <ng-container *ngIf="!field.condition || evalCondition(field.condition, j); else elseConditionvalue">
                     <td *ngIf="data.header[j].type=='text' || data.header[i].type=='number'">{{field?.value}}</td>
@@ -57,6 +57,13 @@
         </tr>
         <tr>
             <td [attr.colspan]="data.header.length" class="pagination" [ngClass]="{'disabled': pagination.total==0}">
+                <select (change)="changeNumberOfElementsPerPage($event)">
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="30">30</option>
+                    <option value="50">50</option>
+                    <option value="-1">All</option>
+                </select>
                 <i class="icon icon-arrow-left"
                     (click)="pagination.current = pagination.current == 1 ? pagination.total : pagination.current - 1"></i>
                 <input type="text" class="mx-1" [(ngModel)]="pagination.current"

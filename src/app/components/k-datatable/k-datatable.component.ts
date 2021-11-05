@@ -135,12 +135,17 @@ export class KDatatableComponent implements OnInit {
 
   //set pagination params
   setPagination(elementPerPage?: number): void {
-    let total = Math.ceil(this.data.items.length / 2)
+    let elementPerPageValue = !elementPerPage ? this.pagination.elementsPerPage : elementPerPage != -1 ? elementPerPage : this.data.items.length
+    let total = Math.ceil(this.data.items.length / elementPerPageValue)
     this.pagination = {
-      elementsPerPage: elementPerPage ? elementPerPage : this.pagination.elementsPerPage,
+      elementsPerPage: elementPerPageValue,
       current: this.pagination.current <= total && this.pagination.current != 0 ? this.pagination.current : total,
       total: total
     }
+  }
+
+  changeNumberOfElementsPerPage(event: any) {
+    this.setPagination(+event?.target?.value)
   }
 
   //evaluate if some condition is true
