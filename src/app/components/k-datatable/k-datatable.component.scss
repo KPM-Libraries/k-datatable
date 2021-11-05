@@ -1,0 +1,323 @@
+*{
+    font-size: 18px;
+}
+
+table{
+    width: 80%;
+    ul{
+        padding-left: 20px;
+    }
+    input{
+        width: 95%;
+    }     
+    i{
+        cursor: pointer;
+    }
+    button{
+        outline: none;
+        border: none;
+        padding: 0.6rem;
+        padding-top: 0.2rem;
+        padding-bottom: 0.2rem;
+        border-radius: 7px;
+        cursor: pointer;
+    }
+    th{
+        position: relative;
+        .order-asc{
+            position: absolute;
+            right: 5px;
+            bottom: 4px;
+        }
+        .order-desc{
+            position: absolute;
+            right: 5px;
+            top: 4px;
+        }
+    }
+}
+
+table, td, th{
+    border: 1px solid rgba(0, 0, 0, 0.11);
+    border-collapse: collapse;
+    text-align: center;
+    vertical-align: middle;
+    padding: 0.2rem;
+}
+
+span{
+    padding: 0.5rem;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+    border-radius: 7px;
+}
+
+.k-bg-navy{
+    background-color: #001f3f;
+    color: #FFFFFF;
+}
+
+.k-bg-blue{
+    background-color: #0074D9;
+    color: #FFFFFF;
+}
+
+.k-bg-aqua{
+    background-color: #7FDBFF;
+    color: #000000;
+}
+
+.k-bg-teal{
+    background-color: #39CCCC;
+    color: #000000;
+}
+
+.k-bg-purple{
+    background-color: #B10DC9;
+    color: #FFFFFF;
+}
+
+.k-bg-fuchsia{
+    background-color: #F012BE;
+    color: #FFFFFF;
+}
+
+.k-bg-maroon{
+    background-color: #85144b;
+    color: #FFFFFF;
+}
+
+.k-bg-danger{
+    background-color: #FF4136;
+    color: #FFFFFF;
+}
+
+.k-bg-warning{
+    background-color: #FF851B;
+    color: #000000;
+}
+
+.k-bg-yellow{
+    background-color: #FFDC00;
+    color: #000000;
+}
+
+.k-bg-olive{
+    background-color: #3D9970;
+    color: #FFFFFF;
+}
+
+.k-bg-success{
+    background-color: #2ECC40;
+    color: #FFFFFF;
+}
+
+.k-bg-lime{
+    background-color: #01FF70;
+    color: #000000;
+}
+
+.k-bg-dark{
+    background-color: #111111;
+    color: #FFFFFF;
+}
+
+.k-bg-gray{
+    background-color: #AAAAAA;
+    color: #000000;
+}
+
+.k-bg-silver{
+    background-color: #DDDDDD;
+    color: #000000;
+}
+
+.k-bg-light{
+    background-color: #FFFFFF;
+    color: #000000;
+}
+
+.k-color-navy{
+    color: #001f3f;
+}
+
+.k-color-blue{
+    color: #0074D9;
+}
+
+.k-color-aqua{
+    color: #7FDBFF;
+}
+
+.k-color-teal{
+    color: #39CCCC;
+}
+
+.k-color-purple{
+    color: #B10DC9;
+}
+
+.k-color-fuchsia{
+    color: #F012BE;
+}
+
+.k-color-maroon{
+    color: #85144b;
+}
+
+.k-color-danger{
+    color: #FF4136;
+}
+
+.k-color-warning{
+    color: #FF851B;
+}
+
+.k-color-yellow{
+    color: #FFDC00;
+}
+
+.k-color-olive{
+    color: #3D9970;
+}
+
+.k-color-success{
+    color: #2ECC40;
+}
+
+.k-color-lime{
+    color: #01FF70;
+}
+
+.k-color-dark{
+    color: #111111;
+}
+
+.k-color-gray{
+    color: #AAAAAA;
+}
+
+.k-color-silver{
+    color: #DDDDDD;
+}
+
+.k-color-light{
+    color: #FFFFFF;
+}
+
+.k-border-navy{
+    border: solid 1px #001f3f;
+}
+
+.k-border-blue{
+    border: solid 1px #0074D9;
+}
+
+.k-border-aqua{
+    border: solid 1px #7FDBFF;
+}
+
+.k-border-teal{
+    border: solid 1px #39CCCC;
+}
+
+.k-border-purple{
+    border: solid 1px #B10DC9;
+}
+
+.k-border-fuchsia{
+    border: solid 1px #F012BE;
+}
+
+.k-border-maroon{
+    border: solid 1px #85144b;
+}
+
+.k-border-danger{
+    border: solid 1px #FF4136;
+}
+
+.k-border-warning{
+    border: solid 1px #FF851B;
+}
+
+.k-border-yellow{
+    border: solid 1px #FFDC00;
+}
+
+.k-border-olive{
+    border: solid 1px #3D9970;
+}
+
+.k-border-success{
+    border: solid 1px #2ECC40;
+}
+
+.k-border-lime{
+    border: solid 1px #01FF70;
+}
+
+.k-border-dark{
+    border: solid 1px #111111;
+}
+
+.k-border-gray{
+    border: solid 1px #AAAAAA;
+}
+
+.k-border-silver{
+    border: solid 1px #DDDDDD;
+}
+
+.k-border-light{
+    border: solid 1px #FFFFFF;
+}
+
+
+//icons
+.icon-arrow-bottom {
+  mask: url("/assets/icons/arrow.svg");
+}
+
+.icon-arrow-top {
+  mask: url("/assets/icons/arrow.svg");
+  transform: scaleY(-1);
+}
+
+.icon-arrow-left {
+  mask: url("/assets/icons/arrow.svg");
+  transform: rotate(90deg);
+}
+
+.icon-arrow-right {
+  mask: url("/assets/icons/arrow.svg");
+  transform: rotate(-90deg);
+}
+
+.icon {
+    display: inline-block;
+    background: #AAAAAA;  
+    mask-size: 100% 100%;
+    width: 10px;
+    height: 10px;  
+}
+
+.icon-active {
+    background: #000000;
+}
+
+.pagination{
+    text-align: right;
+    input{
+        width: 20px;
+        max-width: 60px;
+    }
+    i{
+        cursor: pointer;
+    }
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.4;
+}
