@@ -86,6 +86,15 @@ export class AppComponent {
           },
           {
             value: new Date('5/7/2019').toLocaleDateString()
+          },
+          {
+            value: [
+              {
+                style: "k-bg-fuchsia",
+                title: "Modifier",
+                event: "update"
+              }
+            ]
           }
         ]
       },
@@ -103,6 +112,15 @@ export class AppComponent {
           },
           {
             value: new Date().toLocaleDateString()
+          },
+          {
+            value: [
+              {
+                style: "k-bg-fuchsia",
+                title: "Modifier",
+                event: "update"
+              }
+            ]
           }
         ]
       }
