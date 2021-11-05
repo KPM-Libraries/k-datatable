@@ -2,21 +2,20 @@
   <thead>
     <tr>
       <th *ngFor="let header of data?.header; let i=index">{{header?.name}}<i class="icon icon-arrow-bottom"
-          [ngClass]="{'icon-active': lastOrderStatus.index==i && lastOrderStatus.type =='DESC'}"
+          [ngClass]="{'icon-active': orderStatus.index==i && orderStatus.type =='DESC'}"
           (click)="order(i, 'DESC')"></i><i class="icon icon-arrow-top"
-          [ngClass]="{'icon-active': lastOrderStatus.index==i && lastOrderStatus.type =='ASC'}"
-          (click)="order(i, 'ASC')"></i></th>
+          [ngClass]="{'icon-active': orderStatus.index==i && orderStatus.type =='ASC'}" (click)="order(i, 'ASC')"></i>
+      </th>
     </tr>
     <tr>
       <td *ngFor="let header of data?.header; let i=index">
-        <input *ngIf="header?.filter" type="text" [(ngModel)]="filterTable[i]" />
+        <input *ngIf="header?.filter" type="text" [(ngModel)]="filterTable[i]" (input)="filter()" />
       </td>
     </tr>
   </thead>
   <tbody>
-    <tr
-      *ngFor="let item of data?.items | slice: (pagination.current-1)*pagination.elementsPerPage : pagination.current*pagination.elementsPerPage">
-      <ng-container *ngIf="filterAccepted(item)">
+    <tr *ngFor="let item of data?.items ">
+      <ng-container>
         <ng-container *ngFor="let cel of item">
           <td *ngIf="cel.type=='text'">{{cel.content}}</td>
           <td *ngIf="cel.type=='date'">{{cel.content}}</td>

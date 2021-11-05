@@ -44,7 +44,7 @@ export class AppComponent {
       [
         {
           type: "text",
-          content: "Cel 1"
+          content: "Cel 12"
         },
         {
           type: "text",
@@ -81,7 +81,7 @@ export class AppComponent {
       [
         {
           type: "text",
-          content: "Cel 0"
+          content: "Cel 1"
         },
         {
           type: "text",
@@ -101,11 +101,12 @@ export class AppComponent {
 
   filterTable = new Array(this.data?.header?.length)
 
-  lastOrderStatus = {
+  startedItems = [...this.data.items]
+
+  orderStatus = {
     index: -1,
     type: '',
-    ascOrDescTable: new Array<number>(),
-    items: [...this.data.items]
+    ascOrDescTable: new Array<number>()
   }
 
   pagination = {
@@ -114,7 +115,16 @@ export class AppComponent {
     total: Math.ceil(this.data.items.length / 2)
   }
 
-  ok(i: number) { }
+
+  //filter part
+  filter() {
+    this.data.items = [...this.startedItems]
+    if (this.orderStatus.index != -1)
+      this.order(this.orderStatus.index, this.orderStatus.type, true)
+    for (let i = 0; i < this.data.items.length; i++)
+      if (!this.filterAccepted(this.data.items[i]))
+        this.data.items.splice(i, 1)
+  }
 
   filterAccepted(item: any): Boolean {
     for (let i = 0; i < this.filterTable.length; i++)
@@ -146,28 +156,28 @@ export class AppComponent {
     return false
   }
 
-  order(index: number, type: string): void {
-    if (index != this.lastOrderStatus.index || type != this.lastOrderStatus.type) {
-      this.lastOrderStatus.index = index
-      this.lastOrderStatus.type = type
-      this.lastOrderStatus.ascOrDescTable = type == 'ASC' ? [-1, 1] : type == 'DESC' ? [1, -1] : []
-      if (this.lastOrderStatus.ascOrDescTable.length > 0)
+  order(index: number, type: string, force?: boolean): void {
+    if (index != this.orderStatus.index || type != this.orderStatus.type || force) {
+      this.orderStatus.index = index
+      this.orderStatus.type = type
+      this.orderStatus.ascOrDescTable = type == 'ASC' ? [-1, 1] : type == 'DESC' ? [1, -1] : []
+      if (this.orderStatus.ascOrDescTable.length > 0)
         this.data.items = this.data?.items.sort((elt1: any, elt2: any): number => {
           if (typeof elt1[index]?.content != typeof elt2[index]?.content)
             return -1
           switch (elt1[index]?.type) {
             case 'date':
-              return (new Date(elt1[index]?.content).getTime() - new Date(elt2[index]?.content).getTime()) * this.lastOrderStatus.ascOrDescTable[1]
+              return (new Date(elt1[index]?.content).getTime() - new Date(elt2[index]?.content).getTime()) * this.orderStatus.ascOrDescTable[1]
             case 'list':
-              return elt1[index]?.content.join('').toLowerCase() == elt2[index]?.content.join('').toLowerCase() ? 0 : elt1[index]?.content.join('').toLowerCase() < elt2[index]?.content.join('').toLowerCase() ? this.lastOrderStatus.ascOrDescTable[0] : this.lastOrderStatus.ascOrDescTable[1]
+              return elt1[index]?.content.join('').toLowerCase() == elt2[index]?.content.join('').toLowerCase() ? 0 : elt1[index]?.content.join('').toLowerCase() < elt2[index]?.content.join('').toLowerCase() ? this.orderStatus.ascOrDescTable[0] : this.orderStatus.ascOrDescTable[1]
             default: //all other types
-              return elt1[index]?.content.toString().toLowerCase() == elt2[index]?.content.toString().toLowerCase() ? 0 : elt1[index]?.content.toString().toLowerCase() < elt2[index]?.content.toString().toLowerCase() ? this.lastOrderStatus.ascOrDescTable[0] : this.lastOrderStatus.ascOrDescTable[1]
+              return elt1[index]?.content.toString().toLowerCase() == elt2[index]?.content.toString().toLowerCase() ? 0 : elt1[index]?.content.toString().toLowerCase() < elt2[index]?.content.toString().toLowerCase() ? this.orderStatus.ascOrDescTable[0] : this.orderStatus.ascOrDescTable[1]
           }
         })
     } else {
-      this.lastOrderStatus.index = -1
-      this.lastOrderStatus.type = ''
-      this.data.items = [...this.lastOrderStatus.items]
+      this.orderStatus.index = -1
+      this.orderStatus.type = ''
+      this.filter()
     }
   }
 
