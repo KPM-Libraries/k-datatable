@@ -16,26 +16,30 @@
   <tbody>
     <tr
       *ngFor="let item of data?.items | slice: (pagination.current-1)*pagination.elementsPerPage : pagination.current*pagination.elementsPerPage; let i = index">
-      <ng-container>
-        <ng-container *ngFor="let cel of item">
-          <td *ngIf="data.header[i].type=='text'">{{cel.content}}</td>
-          <td *ngIf="data.header[i].type=='date'">{{cel.content}}</td>
-          <td *ngIf="data.header[i].type=='bold'"><b>{{cel.content}}</b></td>
-          <td *ngIf="data.header[i].type=='image'"><img [src]="cel?.src" [width]="cel?.width" [height]="cel?.height" />
+      <ng-container *ngFor="let field of item">
+        <ng-container *ngIf="!field.condition || evalCondition(field.condition, i); else elseConditionContent">
+          <td *ngIf="data.header[i].type=='text'">{{field?.content}}</td>
+          <td *ngIf="data.header[i].type=='date'">{{field?.content}}</td>
+          <td *ngIf="data.header[i].type=='bold'"><b>{{field?.content}}</b></td>
+          <td *ngIf="data.header[i].type=='image'"><img [src]="field?.src" [width]="field?.width"
+              [height]="field?.height" />
           </td>
-          <td *ngIf="data.header[i].type=='badge'"><span [class]="cel.style">{{cel.content}}</span></td>
+          <td *ngIf="data.header[i].type=='badge'"><span [class]="field.style">{{field.content}}</span></td>
           <td *ngIf="data.header[i].type=='list'">
             <ul>
-              <li *ngFor="let li of cel.content">{{li}}</li>
+              <li *ngFor="let li of field.content">{{li}}</li>
             </ul>
           </td>
         </ng-container>
+        <ng-template #elseConditionContent>
+          <td></td>
+        </ng-template>
       </ng-container>
     </tr>
   </tbody>
   <tfoot>
     <tr *ngIf="data.footer">
-      <td *ngFor="let footer of data?.footer">{{footer}}</td>
+      <th *ngFor="let footer of data?.footer">{{footer}}</th>
     </tr>
     <tr>
       <td [attr.colspan]="data.header.length" class="pagination" [ngClass]="{'disabled': pagination.total==0}">

@@ -47,7 +47,8 @@ export class AppComponent {
     items: [
       [
         {
-          content: "Cel 12"
+          content: "Cel 12",
+          condition: "fields[1].content === 5"
         },
         {
           content: 5,
@@ -189,4 +190,9 @@ export class AppComponent {
     }
   }
 
+  evalCondition(condition: string, index: number) {
+    //condition: "fields[0].value === 0"
+    condition = condition.split("fields[").join("this.data.items[index][")
+    return eval(condition)
+  }
 }
