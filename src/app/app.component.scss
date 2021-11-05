@@ -3,18 +3,27 @@
 }
 
 table{
-    width: 60%;
+    width: 80%;
     ul{
         padding-left: 20px;
     }
     input{
         width: 95%;
+    }     
+    i{
+        cursor: pointer;
+    }
+    button{
+        outline: none;
+        border: none;
+        padding: 0.6rem;
+        padding-top: 0.2rem;
+        padding-bottom: 0.2rem;
+        border-radius: 7px;
+        cursor: pointer;
     }
     th{
-        position: relative;        
-        i{
-            cursor: pointer;
-        }
+        position: relative;
         .order-asc{
             position: absolute;
             right: 5px;
@@ -129,71 +138,71 @@ span{
 }
 
 .k-color-navy{
-    background-color: #001f3f;
+    color: #001f3f;
 }
 
 .k-color-blue{
-    background-color: #0074D9;
+    color: #0074D9;
 }
 
 .k-color-aqua{
-    background-color: #7FDBFF;
+    color: #7FDBFF;
 }
 
 .k-color-teal{
-    background-color: #39CCCC;
+    color: #39CCCC;
 }
 
 .k-color-purple{
-    background-color: #B10DC9;
+    color: #B10DC9;
 }
 
 .k-color-fuchsia{
-    background-color: #F012BE;
+    color: #F012BE;
 }
 
 .k-color-maroon{
-    background-color: #85144b;
+    color: #85144b;
 }
 
 .k-color-danger{
-    background-color: #FF4136;
+    color: #FF4136;
 }
 
 .k-color-warning{
-    background-color: #FF851B;
+    color: #FF851B;
 }
 
 .k-color-yellow{
-    background-color: #FFDC00;
+    color: #FFDC00;
 }
 
 .k-color-olive{
-    background-color: #3D9970;
+    color: #3D9970;
 }
 
 .k-color-success{
-    background-color: #2ECC40;
+    color: #2ECC40;
 }
 
 .k-color-lime{
-    background-color: #01FF70;
+    color: #01FF70;
 }
 
 .k-color-dark{
-    background-color: #111111;
+    color: #111111;
 }
 
 .k-color-gray{
-    background-color: #AAAAAA;
+    color: #AAAAAA;
 }
 
 .k-color-silver{
-    background-color: #DDDDDD;
+    color: #DDDDDD;
 }
 
 .k-color-light{
-    background-color: #FFFFFF;
+    color: #FFFFFF;
 }
 
 .k-border-navy{

@@ -5,7 +5,7 @@ interface DataTable {
   style?: string,
   header: Array<{ name: string, type: string, order: boolean, filter: boolean }>,
   footer?: Array<string>,
-  items: Array<Array<{ content: any, style?: string, src?: string, width?: string, height?: string, condition?: string }>>
+  items: Array<Array<{ value: any, style?: string, src?: string, width?: string, height?: string, condition?: string }>>
 }
 @Component({
   selector: 'app-root',
@@ -41,52 +41,67 @@ export class AppComponent {
         type: "date",
         order: false,
         filter: false
+      },
+      {
+        name: "Actions",
+        type: "buttons",
+        order: false,
+        filter: false
       }
     ],
     footer: ["Footer 1", "Footer 2", "Footer 3", "Footer 4"],
     items: [
       [
         {
-          content: "Cel 12",
-          condition: "fields[1].content === 5"
+          value: "Cel 12",
+          condition: "fields[1].value === 5"
         },
         {
-          content: 5,
+          value: 5,
           style: "k-bg-danger"
         },
         {
-          content: ["rtas", "World"]
+          value: ["rtas", "World"]
         },
         {
-          content: new Date('4/7/2025').toLocaleDateString()
+          value: new Date('4/7/2025').toLocaleDateString()
+        },
+        {
+          value: [
+            {
+              style: "k-bg-fuchsia",
+              title: "Modifier",
+              event: "update"
+            }
+          ]
         }
       ],
       [
         {
-          content: "Cel 5"
+          value: "Cel 5"
         },
         {
-          content: 8
+          value: 8
         },
         {
-          content: ["aello"]
+          value: ["aello"]
         },
         {
-          content: new Date('5/7/2019').toLocaleDateString()
+          value: new Date('5/7/2019').toLocaleDateString()
         }
       ],
       [
         {
-          content: "Cel 1"
+          value: "Cel 1"
         },
         {
-          content: 1
+          value: 1
         },
         {
-          content: ["Hello", "World"]
+          value: ["Hello", "World"]
         },
         {
-          content: new Date().toLocaleDateString()
+          value: new Date().toLocaleDateString()
         }
       ]
     ]
@@ -131,15 +146,15 @@ export class AppComponent {
           case 'text':
           case 'bold':
           case 'badge':
-            if (!item[i]?.content.toLowerCase().includes(this.filterTable[i].toLowerCase()))
+            if (!item[i]?.value.toLowerCase().includes(this.filterTable[i].toLowerCase()))
               return false
             break
           case 'list':
-            if (!this.filterInsideList(item[i]?.content, this.filterTable[i].toLowerCase()))
+            if (!this.filterInsideList(item[i]?.value, this.filterTable[i].toLowerCase()))
               return false
             break
           case 'image':
-            if (!item[i]?.content?.src.includes(this.filterTable[i]))
+            if (!item[i]?.value?.src.includes(this.filterTable[i]))
               return false
             break
         }
@@ -162,15 +177,15 @@ export class AppComponent {
       if (this.orderStatus.ascOrDescTable.length > 0)
         this.data.items = this.data?.items.sort((elt1: any, elt2: any): number => {
           console.log(55555)
-          if (typeof elt1[index]?.content != typeof elt2[index]?.content)
+          if (typeof elt1[index]?.value != typeof elt2[index]?.value)
             return -1
           switch (this.data.header[index]?.type) {
             case 'date':
-              return (new Date(elt1[index]?.content).getTime() - new Date(elt2[index]?.content).getTime()) * this.orderStatus.ascOrDescTable[1]
+              return (new Date(elt1[index]?.value).getTime() - new Date(elt2[index]?.value).getTime()) * this.orderStatus.ascOrDescTable[1]
             case 'list':
-              return elt1[index]?.content.join('').toLowerCase() == elt2[index]?.content.join('').toLowerCase() ? 0 : elt1[index]?.content.join('').toLowerCase() < elt2[index]?.content.join('').toLowerCase() ? this.orderStatus.ascOrDescTable[0] : this.orderStatus.ascOrDescTable[1]
+              return elt1[index]?.value.join('').toLowerCase() == elt2[index]?.value.join('').toLowerCase() ? 0 : elt1[index]?.value.join('').toLowerCase() < elt2[index]?.value.join('').toLowerCase() ? this.orderStatus.ascOrDescTable[0] : this.orderStatus.ascOrDescTable[1]
             default: //all other types
-              return elt1[index]?.content.toString().toLowerCase() == elt2[index]?.content.toString().toLowerCase() ? 0 : elt1[index]?.content.toString().toLowerCase() < elt2[index]?.content.toString().toLowerCase() ? this.orderStatus.ascOrDescTable[0] : this.orderStatus.ascOrDescTable[1]
+              return elt1[index]?.value.toString().toLowerCase() == elt2[index]?.value.toString().toLowerCase() ? 0 : elt1[index]?.value.toString().toLowerCase() < elt2[index]?.value.toString().toLowerCase() ? this.orderStatus.ascOrDescTable[0] : this.orderStatus.ascOrDescTable[1]
           }
         })
     } else {
