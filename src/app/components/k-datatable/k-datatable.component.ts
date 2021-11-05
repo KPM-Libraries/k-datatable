@@ -29,6 +29,7 @@ export class KDatatableComponent implements OnInit {
   startedItems: any
   orderStatus: any
   pagination: any
+  selectedItems = new Array()
 
   constructor() { }
 

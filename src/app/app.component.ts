@@ -25,7 +25,7 @@ export class AppComponent {
       },
       {
         name: "Header 3",
-        type: "list",
+        type: "text",
         order: false,
         filter: true
       },
@@ -42,7 +42,7 @@ export class AppComponent {
         filter: false
       }
     ],
-    footer: ["Footer 1", "Footer 2", "Footer 3", "Footer 4"],
+    footer: ["Footer 1", "Footer 2", "Footer 3", "Footer 4", "Actions"],
     items: [
       {
         id: 1,
@@ -56,7 +56,7 @@ export class AppComponent {
             style: "k-bg-danger"
           },
           {
-            value: ["rtas", "World"]
+            value: "ok"
           },
           {
             value: new Date('4/7/2025').toLocaleDateString()
@@ -82,7 +82,7 @@ export class AppComponent {
             value: 8
           },
           {
-            value: ["aello"]
+            value: "aello"
           },
           {
             value: new Date('5/7/2019').toLocaleDateString()
@@ -108,7 +108,7 @@ export class AppComponent {
             value: 1
           },
           {
-            value: ["Hello", "World"]
+            value: "World"
           },
           {
             value: new Date().toLocaleDateString()
