@@ -117,13 +117,18 @@ export class AppComponent {
 
 
   //filter part
-  filter() {
+  filter(): void {
     this.data.items = [...this.startedItems]
     if (this.orderStatus.index != -1)
       this.order(this.orderStatus.index, this.orderStatus.type, true)
-    for (let i = 0; i < this.data.items.length; i++)
+
+    let i = 0
+    while (i < this.data.items.length)
       if (!this.filterAccepted(this.data.items[i]))
         this.data.items.splice(i, 1)
+      else
+        i++
+    this.setPagination()
   }
 
   filterAccepted(item: any): Boolean {
@@ -163,6 +168,7 @@ export class AppComponent {
       this.orderStatus.ascOrDescTable = type == 'ASC' ? [-1, 1] : type == 'DESC' ? [1, -1] : []
       if (this.orderStatus.ascOrDescTable.length > 0)
         this.data.items = this.data?.items.sort((elt1: any, elt2: any): number => {
+          console.log(55555)
           if (typeof elt1[index]?.content != typeof elt2[index]?.content)
             return -1
           switch (elt1[index]?.type) {
@@ -178,6 +184,16 @@ export class AppComponent {
       this.orderStatus.index = -1
       this.orderStatus.type = ''
       this.filter()
+    }
+    this.setPagination()
+  }
+
+  setPagination(elementPerPage?: number): void {
+    let total = Math.ceil(this.data.items.length / 2)
+    this.pagination = {
+      elementsPerPage: elementPerPage ? elementPerPage : this.pagination.elementsPerPage,
+      current: this.pagination.current <= total && this.pagination.current != 0 ? this.pagination.current : total,
+      total: total
     }
   }
 

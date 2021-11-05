@@ -37,7 +37,7 @@
       <td *ngFor="let footer of data?.footer">{{footer}}</td>
     </tr>
     <tr>
-      <td [attr.colspan]="data.header.length" class="pagination">
+      <td [attr.colspan]="data.header.length" class="pagination" [ngClass]="{'disabled': pagination.total==0}">
         <i class="icon icon-arrow-left"
           (click)="pagination.current = pagination.current == 1 ? pagination.total : pagination.current - 1"></i>
         <input type="text" class="mx-1" [(ngModel)]="pagination.current"
