@@ -69,7 +69,7 @@ export class KDatatableComponent implements OnInit {
 
     let i = 0
     while (i < this.data.items.length)
-      if (!this.filterAccepted(this.data.items[i]))
+      if (!this.filterAccepted(this.data.items[i].data))
         this.data.items.splice(i, 1)
       else
         i++
@@ -81,18 +81,16 @@ export class KDatatableComponent implements OnInit {
     for (let i = 0; i < this.filterTable.length; i++)
       if (this.filterTable[i] != null && this.filterTable[i] != '') {
         switch (this.data.header[i]?.type) {
-          case 'text':
-          case 'bold':
-          case 'badge':
-            if (!item[i]?.value.toLowerCase().includes(this.filterTable[i].toLowerCase()))
-              return false
-            break
           case 'list':
             if (!this.filterInsideList(item[i]?.value, this.filterTable[i].toLowerCase()))
               return false
             break
           case 'image':
             if (!item[i]?.value?.src.includes(this.filterTable[i]))
+              return false
+            break
+          default: //all other types
+            if (!item[i]?.value.toLowerCase().includes(this.filterTable[i].toLowerCase()))
               return false
             break
         }
@@ -116,16 +114,15 @@ export class KDatatableComponent implements OnInit {
       this.orderStatus.ascOrDescTable = type == 'ASC' ? [-1, 1] : type == 'DESC' ? [1, -1] : []
       if (this.orderStatus.ascOrDescTable.length > 0)
         this.data.items = this.data?.items.sort((elt1: any, elt2: any): number => {
-          console.log(55555)
-          if (typeof elt1[index]?.value != typeof elt2[index]?.value)
+          if (typeof elt1.data[index]?.value != typeof elt2.data[index]?.value)
             return -1
           switch (this.data.header[index]?.type) {
             case 'date':
-              return (new Date(elt1[index]?.value).getTime() - new Date(elt2[index]?.value).getTime()) * this.orderStatus.ascOrDescTable[1]
+              return (new Date(elt1.data[index]?.value).getTime() - new Date(elt2.data[index]?.value).getTime()) * this.orderStatus.ascOrDescTable[1]
             case 'list':
-              return elt1[index]?.value.join('').toLowerCase() == elt2[index]?.value.join('').toLowerCase() ? 0 : elt1[index]?.value.join('').toLowerCase() < elt2[index]?.value.join('').toLowerCase() ? this.orderStatus.ascOrDescTable[0] : this.orderStatus.ascOrDescTable[1]
+              return elt1.data[index]?.value.join('').toLowerCase() == elt2.data[index]?.value.join('').toLowerCase() ? 0 : elt1.data[index]?.value.join('').toLowerCase() < elt2.data[index]?.value.join('').toLowerCase() ? this.orderStatus.ascOrDescTable[0] : this.orderStatus.ascOrDescTable[1]
             default: //all other types
-              return elt1[index]?.value.toString().toLowerCase() == elt2[index]?.value.toString().toLowerCase() ? 0 : elt1[index]?.value.toString().toLowerCase() < elt2[index]?.value.toString().toLowerCase() ? this.orderStatus.ascOrDescTable[0] : this.orderStatus.ascOrDescTable[1]
+              return elt1.data[index]?.value.toString().toLowerCase() == elt2.data[index]?.value.toString().toLowerCase() ? 0 : elt1.data[index]?.value.toString().toLowerCase() < elt2.data[index]?.value.toString().toLowerCase() ? this.orderStatus.ascOrDescTable[0] : this.orderStatus.ascOrDescTable[1]
           }
         })
     } else {
@@ -148,7 +145,7 @@ export class KDatatableComponent implements OnInit {
 
   //evaluate if some condition is true
   evalCondition(condition: string, index: number) {
-    condition = condition.split("fields[").join("this.data.items[index].data[")
+    condition = condition.split("fields[").join("this.startedItems[index].data[")
     return eval(condition)
   }
 
