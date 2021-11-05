@@ -14,7 +14,8 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let item of data?.items ">
+    <tr
+      *ngFor="let item of data?.items | slice: (pagination.current-1)*pagination.elementsPerPage : pagination.current*pagination.elementsPerPage">
       <ng-container>
         <ng-container *ngFor="let cel of item">
           <td *ngIf="cel.type=='text'">{{cel.content}}</td>
