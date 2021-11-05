@@ -44,8 +44,11 @@
                 <ng-container *ngFor="let field of item?.data; let j=index">
                     <ng-container
                         *ngIf="!field.condition || evalCondition(field.condition, j); else elseConditionvalue">
-                        <td *ngIf="data.header[j].type=='text' || data.header[i].type=='number'">{{field?.value}}</td>
+                        <td *ngIf="data.header[j].type=='text' || data.header[j].type=='number'">{{field?.value}}</td>
                         <td *ngIf="data.header[j].type=='email'"><a href="mailto:{{field?.value}}">{{field?.value}}</a>
+                        </td>
+                        <td *ngIf="data.header[j].type=='link'"><a href="https://{{field?.value}}"
+                                target="_blank">{{field?.value}}</a>
                         </td>
                         <td *ngIf="data.header[j].type=='date'">{{field?.value}}</td>
                         <td *ngIf="data.header[j].type=='bold'"><b>{{field?.value}}</b></td>
