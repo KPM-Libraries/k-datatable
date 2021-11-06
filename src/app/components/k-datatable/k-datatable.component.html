@@ -31,13 +31,14 @@
                 </td>
             </tr>
             <tr>
-                <th *ngFor="let header of data?.header; let i=index">{{header?.name}}
-                    <div *ngIf="header?.order">
+                <th *ngFor="let header of data?.header; let i=index">
+                    {{header?.name}}
+                    <ng-container *ngIf="header?.order">
                         <i [ngClass]="{'k-icon-active': orderStatus.index==i && orderStatus.type =='DESC'}"
                             (click)="order(i, 'DESC')"></i>
                         <i [ngClass]="{'k-icon-active': orderStatus.index==i && orderStatus.type =='ASC'}"
                             (click)="order(i, 'ASC')"></i>
-                    </div>
+                    </ng-container>
                 </th>
             </tr>
             <tr *ngIf="isFilter">

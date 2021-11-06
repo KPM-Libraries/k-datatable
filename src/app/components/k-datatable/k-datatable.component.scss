@@ -21,11 +21,12 @@
                     text-align: center;
                     padding-left: 0.5rem;
                     padding-right: 0.5rem;
+                    min-width: 50px;
                     max-width: 300px;
                     white-space: nowrap; 
                     overflow: hidden; 
                     text-overflow:ellipsis;
-                }  
+                } 
             }
         }
         thead, tfoot{
@@ -88,6 +89,7 @@
                         input[type=text]{
                             width: 20px;
                             max-width: 60px;
+                            margin-right: 0.2rem;
                         }
                         i{
                             width: 18px;
@@ -114,30 +116,24 @@
             tr:nth-child(2){  
                 th{
                     padding-bottom: 0.5rem;
-                    div{
-                        position: relative;
-                        height: 20px; 
-                        width: 20px; 
-                        float: right; 
-                        margin-left: 1rem;
-                        i{
-                            position: absolute;
-                            right: 2px;                            
-                            width: 8px;
-                            height: 8px;  
-                        }  
-                        i:first-child{
-                            mask: url("/assets/icons/sort.svg");
-                            bottom: 2px;
-                            mask-size: 100% 100%;
-                        }    
-                        i:nth-child(2){
-                            mask: url("/assets/icons/sort.svg");
-                            transform: scaleY(-1);
-                            top: 2px;
-                            mask-size: 100% 100%;
-                        }  
-                    }
+                    position: relative; 
+                    i{
+                        position: absolute;
+                        right: 8px;                            
+                        width: 8px;
+                        height: 8px;  
+                    }  
+                    i:first-child{
+                        mask: url("/assets/icons/sort.svg");
+                        bottom: 8px;
+                        mask-size: 100% 100%;
+                    }    
+                    i:nth-child(2){
+                        mask: url("/assets/icons/sort.svg");
+                        transform: scaleY(-1);
+                        top: 2px;
+                        mask-size: 100% 100%;
+                    }  
                 }
             }
             tr:last-child{
