@@ -91,6 +91,10 @@ export class KDatatableComponent implements OnInit {
             if (!item[i]?.value?.src.includes(this.filterTable[i]))
               return false
             break
+          case 'number':
+            if (item[i].value != this.filterTable[i])
+              return false
+            break
           default: //all other types
             if (!item[i]?.value.toLowerCase().includes(this.filterTable[i].toLowerCase()))
               return false

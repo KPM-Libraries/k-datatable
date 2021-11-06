@@ -7,7 +7,7 @@
                         <i title="Ajouter" (click)="emitEvent({event: 'add'})"></i>
                         <i title="Filtrer" (click)="isFilter=!isFilter"></i>
                     </div>
-                    <div [ngClass]="{'disabled': pagination.total==0}">
+                    <div [ngClass]="{'k-disabled': pagination.total==0}">
                         <select (change)="changeNumberOfElementsPerPage($event)">
                             <option value="10">10</option>
                             <option value="20">20</option>
@@ -29,9 +29,9 @@
             <tr>
                 <th *ngFor="let header of data?.header; let i=index">{{header?.name}}
                     <div *ngIf="header?.order">
-                        <i [ngClass]="{'icon-active': orderStatus.index==i && orderStatus.type =='DESC'}"
+                        <i [ngClass]="{'k-icon-active': orderStatus.index==i && orderStatus.type =='DESC'}"
                             (click)="order(i, 'DESC')"></i>
-                        <i [ngClass]="{'icon-active': orderStatus.index==i && orderStatus.type =='ASC'}"
+                        <i [ngClass]="{'k-icon-active': orderStatus.index==i && orderStatus.type =='ASC'}"
                             (click)="order(i, 'ASC')"></i>
                     </div>
                 </th>

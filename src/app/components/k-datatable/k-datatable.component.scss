@@ -16,12 +16,16 @@
         }
         thead, tfoot{
             background-color: #f1f1f1;
-            i{
-                cursor: pointer;
-            }
         }
         thead{             
-            tr{                   
+            tr{   
+                th, td{
+                    i{
+                        display: inline-block;
+                        background: #AAAAAA; 
+                        cursor: pointer; 
+                    }
+                }                
                 input[type=text], select{
                     background-color: transparent;
                     border: none;
@@ -43,10 +47,9 @@
                         float: left;
                         i{
                             width: 14px;
-                            height: 14px;
-                            display: inline-block;
-                            background: #AAAAAA; 
-                            cursor: pointer; 
+                            height: 14px;                            
+                            margin-left: 0.3rem;
+                            margin-right: 0.3rem;
                         }  
                         i:first-child{
                             mask: url("/assets/icons/plus.svg");
@@ -66,9 +69,6 @@
                         i{
                             width: 10px;
                             height: 10px;
-                            display: inline-block;
-                            background: #AAAAAA; 
-                            cursor: pointer; 
                         }  
                         i:nth-last-child(3){
                             mask: url("/assets/icons/arrow.svg");
@@ -81,7 +81,7 @@
                             mask-size: 100% 100%;
                         } 
                     }                     
-                    .disabled {
+                    .k-disabled {
                         pointer-events: none;
                         opacity: 0.4;
                     }
@@ -99,9 +99,7 @@
                             position: absolute;
                             right: 2px;                            
                             width: 8px;
-                            height: 8px;
-                            display: inline-block;
-                            background: #AAAAAA;  
+                            height: 8px;  
                         }  
                         i:first-child{
                             mask: url("/assets/icons/sort.svg");
@@ -114,7 +112,7 @@
                             top: 2px;
                             mask-size: 100% 100%;
                         }                                  
-                        .icon-active {
+                        .k-icon-active {
                             background: #000000 !important;
                         } 
                     }
