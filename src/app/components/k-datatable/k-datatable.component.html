@@ -1,41 +1,42 @@
-<div class="table-container" *ngIf="data && filterTable && startedItems && orderStatus && pagination">
+<div id="k-table-container" *ngIf="data && filterTable && startedItems && orderStatus && pagination">
     <table>
         <thead>
             <tr>
-                <td [attr.colspan]="data.header.length" class="pagination"
-                    [ngClass]="{'disabled': pagination.total==0}">
-                    <i class="icon icon-add" (click)="emitEvent({
-                                                            event: 'add'
-                                                          })"></i>
-                    <select (change)="changeNumberOfElementsPerPage($event)">
-                        <option value="10">10</option>
-                        <option value="20">20</option>
-                        <option value="30">30</option>
-                        <option value="50">50</option>
-                        <option value="-1">All</option>
-                    </select>
-                    &nbsp;&nbsp;
-                    <i class="icon icon-arrow-left"
-                        (click)="pagination.current = pagination.current == 1 ? pagination.total : pagination.current - 1"></i>
-                    <input type="text" class="mx-1" [(ngModel)]="pagination.current"
-                        (input)="pagination.current = pagination.current > pagination.total ? pagination.total : pagination.current < 1 ? 1 : pagination.current" />
-                    / {{pagination.total}}
-                    <i class="icon icon-arrow-right"
-                        (click)="pagination.current = pagination.current == pagination.total ? 1 : pagination.current + 1"></i>
+                <td [attr.colspan]="data.header.length">
+                    <div>
+                        <i title="Ajouter" (click)="emitEvent({event: 'add'})"></i>
+                        <i title="Filtrer" (click)="isFilter=!isFilter"></i>
+                    </div>
+                    <div [ngClass]="{'disabled': pagination.total==0}">
+                        <select (change)="changeNumberOfElementsPerPage($event)">
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="30">30</option>
+                            <option value="50">50</option>
+                            <option value="-1">All</option>
+                        </select>
+                        &nbsp;&nbsp;
+                        <i
+                            (click)="pagination.current = pagination.current == 1 ? pagination.total : pagination.current - 1"></i>
+                        <input type="text" [(ngModel)]="pagination.current"
+                            (input)="pagination.current = pagination.current > pagination.total ? pagination.total : pagination.current < 1 ? 1 : pagination.current" />
+                        / {{pagination.total}}
+                        <i
+                            (click)="pagination.current = pagination.current == pagination.total ? 1 : pagination.current + 1"></i>
+                    </div>
                 </td>
             </tr>
             <tr>
                 <th *ngFor="let header of data?.header; let i=index">{{header?.name}}
-                    <div *ngIf="header?.order" class="order">
-                        <i class="icon icon-arrow-bottom order-asc"
-                            [ngClass]="{'icon-active': orderStatus.index==i && orderStatus.type =='DESC'}"
-                            (click)="order(i, 'DESC')"></i><i class="icon icon-arrow-top order-desc"
-                            [ngClass]="{'icon-active': orderStatus.index==i && orderStatus.type =='ASC'}"
+                    <div *ngIf="header?.order">
+                        <i [ngClass]="{'icon-active': orderStatus.index==i && orderStatus.type =='DESC'}"
+                            (click)="order(i, 'DESC')"></i>
+                        <i [ngClass]="{'icon-active': orderStatus.index==i && orderStatus.type =='ASC'}"
                             (click)="order(i, 'ASC')"></i>
                     </div>
                 </th>
             </tr>
-            <tr>
+            <tr *ngIf="isFilter">
                 <td *ngFor="let header of data?.header; let i=index">
                     <input *ngIf="header?.filter" type="text" placeholder="{{header?.name}}"
                         [(ngModel)]="filterTable[i]" name="{{header?.name}}" (input)="filter()" autocomplete="off" />

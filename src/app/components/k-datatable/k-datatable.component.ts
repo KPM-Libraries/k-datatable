@@ -26,6 +26,7 @@ export class KDatatableComponent implements OnInit {
 
   //component variables
   filterTable: any
+  isFilter: boolean = false
   startedItems: any
   orderStatus: any
   pagination: any
