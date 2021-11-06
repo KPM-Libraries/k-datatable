@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 interface DataTable {
+  content?: { add?: string, filter?: string, allItems?: string }
   addData: boolean,
   type?: string,
   style?: string,

@@ -4,9 +4,11 @@
             <tr>
                 <td [attr.colspan]="data.header.length">
                     <div>
-                        <i title="Ajouter" (click)="emitEvent({event: 'add'})"></i>
-                        <i *ngIf="filterTable.length>0" title="Filtrer" (click)="isFilter=!isFilter"
-                            [ngClass]="{'k-icon-active': isFilter}"></i>
+                        <i [title]="data?.content?.add? data?.content?.add : 'Add'"
+                            (click)="emitEvent({event: 'add'})"></i>
+                        <i *ngIf="filterTable.length>0"
+                            [title]="data?.content?.filter? data?.content?.filter : 'Filter'"
+                            (click)="isFilter=!isFilter" [ngClass]="{'k-icon-active': isFilter}"></i>
                     </div>
                     <div [ngClass]="{'k-disabled': pagination.total==0}">
                         <select (change)="changeNumberOfElementsPerPage($event)">
@@ -14,7 +16,8 @@
                             <option value="20">20</option>
                             <option value="30">30</option>
                             <option value="50">50</option>
-                            <option value="-1">All</option>
+                            <option value="-1">{{data?.content?.allItems? data?.content?.allItems : 'All'}}
+                            </option>
                         </select>
                         &nbsp;&nbsp;
                         <i

@@ -1,1 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="12.046" height="7" viewBox="0 0 12.046 7"><defs><style>.a{fill:#272c3f;stroke:#272c3f;}</style></defs><path class="a" d="M.778,5.5,5.905.532a.3.3,0,0,0,0-.44.328.328,0,0,0-.454,0L.095,5.281a.3.3,0,0,0,0,.44l5.356,5.187A.329.329,0,0,0,5.677,11a.319.319,0,0,0,.226-.092.3.3,0,0,0,0-.44Z" transform="translate(0.546 6.5) rotate(-90)"/></svg>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <g id="arrow-square-right">
+        <path id="Vector" d="M16.19,2C19.83,2,22,4.17,22,7.81v8.37C22,19.83,19.83,22,16.19,22H7.82C4.18,22,2,19.83,2,16.19V7.81C2,4.17,4.17,2,7.81,2Z" fill="#dddddd" opacity="0.35" />
+        <path id="Vector-2" d="M13.79,16.06a.75.75,0,0,0,0-1.06l-3-3,3-3a.75.75,0,0,0-1.06-1.06L9.2,11.47a.75.75,0,0,0,0,1.06l3.53,3.53a.75.75,0,0,0,1.06,0Z" fill="#aaaaaa" />
+    </g>
+</svg>

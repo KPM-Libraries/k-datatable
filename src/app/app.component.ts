@@ -54,6 +54,11 @@ export class AppComponent implements OnInit {
   }
 
   data = {
+    content: {
+      add: 'Ajouter',
+      filter: 'Filtrer',
+      allItems: 'Tous'
+    },
     addData: true,
     header: [
       {
@@ -64,7 +69,7 @@ export class AppComponent implements OnInit {
       },
       {
         name: "Nom",
-        type: "bold",
+        type: "badge",
         order: true,
         filter: true
       },

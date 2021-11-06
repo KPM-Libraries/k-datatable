@@ -2,11 +2,18 @@
     border: 1px solid #DDDDDD;
     display: inline-block;
     border-radius: 6px;
+    overflow-x: auto;
     table{
         border-collapse:collapse;
         border-spacing: 0; 
+        width: 100%;
         a{
             text-decoration: none;
+            color: #0074D9;
+        }
+        a:active, a:focus, a:hover{
+            text-decoration: none;
+            color: #85144b;
         }
         thead, tbody, tfoot{
             tr{            
@@ -14,6 +21,10 @@
                     text-align: center;
                     padding-left: 0.5rem;
                     padding-right: 0.5rem;
+                    max-width: 300px;
+                    white-space: nowrap; 
+                    overflow: hidden; 
+                    text-overflow:ellipsis;
                 }  
             }
         }
@@ -27,7 +38,10 @@
                         display: inline-block;
                         background: #AAAAAA; 
                         cursor: pointer; 
-                    }                                                     
+                    }     
+                    i:hover{
+                        background: #757575;
+                    }                                                
                     .k-icon-active {
                         background: #000000 !important;
                     }
@@ -49,6 +63,7 @@
                     border-top-left-radius: 5px;
                     border-top-right-radius: 5px;
                     padding-top: 0.5rem; 
+                    padding-bottom: 0.5rem; 
                     div:first-child{
                         float: left;
                         i{
@@ -68,22 +83,25 @@
                     }
                     div:last-child{
                         float: right;
+                        display: flex;
+                        align-items: center;
                         input[type=text]{
                             width: 20px;
                             max-width: 60px;
                         }
                         i{
-                            width: 10px;
-                            height: 10px;
+                            width: 18px;
+                            height: 18px;
+                            margin-left: 0.2rem;
+                            margin-right: 0.2rem;
                         }  
                         i:nth-last-child(3){
                             mask: url("/assets/icons/arrow.svg");
-                            transform: rotate(90deg);
                             mask-size: 100% 100%;
                         }    
                         i:last-child{
                             mask: url("/assets/icons/arrow.svg");
-                            transform: rotate(-90deg);
+                            transform: scaleX(-1);
                             mask-size: 100% 100%;
                         } 
                     }                     
@@ -95,6 +113,7 @@
             } 
             tr:nth-child(2){  
                 th{
+                    padding-bottom: 0.5rem;
                     div{
                         position: relative;
                         height: 20px; 
@@ -123,8 +142,8 @@
             }
             tr:last-child{
                 td{
-                    padding-bottom: 0.5rem;
                     max-width: 0px;
+                    padding-bottom: 0.5rem; 
                 }
                 input[type=text]{                
                     width: 100%; 
@@ -167,7 +186,7 @@
                         padding: 0.6rem;
                         padding-top: 0.2rem;
                         padding-bottom: 0.2rem;
-                        border-radius: 7px;
+                        border-radius: 5px;
                     }                     
                     div{
                         height: 100%;
@@ -179,9 +198,9 @@
                 td{        
                     span{
                         padding: 0.5rem;
-                        padding-top: 0.2rem;
-                        padding-bottom: 0.2rem;
-                        border-radius: 7px;
+                        padding-top: 0.1rem;
+                        padding-bottom: 0.1rem;
+                        border-radius: 5px;
                         background-color: #DDDDDD;
                     }
                     ul{
