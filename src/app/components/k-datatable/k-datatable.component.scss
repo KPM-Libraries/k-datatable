@@ -1,4 +1,7 @@
 #k-table-container{
+    border: 1px solid #DDDDDD;
+    display: inline-block;
+    border-radius: 6px;
     table{
         border-collapse:collapse;
         border-spacing: 0; 
@@ -155,6 +158,9 @@
                     padding: 0.5rem;
                 }
                 td:last-child{
+                    a, button{                        
+                        cursor: pointer;
+                    }
                     button{
                         outline: none;
                         border: none;
@@ -162,7 +168,6 @@
                         padding-top: 0.2rem;
                         padding-bottom: 0.2rem;
                         border-radius: 7px;
-                        cursor: pointer;
                     }                     
                     div{
                         height: 100%;

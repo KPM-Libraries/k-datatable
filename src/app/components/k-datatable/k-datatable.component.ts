@@ -5,7 +5,7 @@ interface DataTable {
   style?: string,
   header: Array<{ name: string, type: string, order: boolean, filter: boolean }>,
   footer?: Array<string>,
-  items: Array<{ id: number, data: Array<{ value: any, style?: string, src?: string, width?: string, height?: string, condition?: string }> }>
+  items: Array<{ id: number, data: Array<{ value: any, style?: string, url?: string, src?: string, width?: string, height?: string, condition?: string }> }>
 }
 
 @Component({

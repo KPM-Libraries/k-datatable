@@ -26,7 +26,8 @@ export class AppComponent implements OnInit {
             value: item.phone
           },
           {
-            value: item.website
+            value: item.website,
+            url: `https://${item.website}`
           },
           {
             value: [
