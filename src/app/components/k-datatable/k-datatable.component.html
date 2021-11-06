@@ -5,7 +5,7 @@
                 <td [attr.colspan]="data.header.length">
                     <div>
                         <i title="Ajouter" (click)="emitEvent({event: 'add'})"></i>
-                        <i title="Filtrer" (click)="isFilter=!isFilter"></i>
+                        <i title="Filtrer" (click)="isFilter=!isFilter" [ngClass]="{'k-icon-active': isFilter}"></i>
                     </div>
                     <div [ngClass]="{'k-disabled': pagination.total==0}">
                         <select (change)="changeNumberOfElementsPerPage($event)">

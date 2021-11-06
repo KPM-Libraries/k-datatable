@@ -15,7 +15,7 @@
             }
         }
         thead, tfoot{
-            background-color: #f1f1f1;
+            background-color: #f7f7f7;
         }
         thead{             
             tr{   
@@ -24,6 +24,9 @@
                         display: inline-block;
                         background: #AAAAAA; 
                         cursor: pointer; 
+                    }                                                     
+                    .k-icon-active {
+                        background: #000000 !important;
                     }
                 }                
                 input[type=text], select{
@@ -111,10 +114,7 @@
                             transform: scaleY(-1);
                             top: 2px;
                             mask-size: 100% 100%;
-                        }                                  
-                        .k-icon-active {
-                            background: #000000 !important;
-                        } 
+                        }  
                     }
                 }
             }
@@ -177,7 +177,7 @@
                         padding-top: 0.2rem;
                         padding-bottom: 0.2rem;
                         border-radius: 7px;
-                        background-color: #AAAAAA;
+                        background-color: #DDDDDD;
                     }
                     ul{
                         padding-left: 20px;
