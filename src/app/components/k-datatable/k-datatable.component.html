@@ -4,6 +4,9 @@
             <tr>
                 <td [attr.colspan]="data.header.length" class="pagination"
                     [ngClass]="{'disabled': pagination.total==0}">
+                    <i class="icon icon-add" (click)="emitEvent({
+                                                            event: 'add'
+                                                          })"></i>
                     <select (change)="changeNumberOfElementsPerPage($event)">
                         <option value="10">10</option>
                         <option value="20">20</option>
@@ -35,7 +38,7 @@
             <tr>
                 <td *ngFor="let header of data?.header; let i=index">
                     <input *ngIf="header?.filter" type="text" placeholder="{{header?.name}}"
-                        [(ngModel)]="filterTable[i]" (input)="filter()" />
+                        [(ngModel)]="filterTable[i]" name="{{header?.name}}" (input)="filter()" autocomplete="off" />
                 </td>
             </tr>
         </thead>
@@ -63,17 +66,22 @@
                             </ul>
                         </td>
                         <td *ngIf="data.header[j].type=='mini-buttons'">
-                            <a *ngFor="let button of field?.value" (click)="emitEvent({
-                            event: button.event,
-                            id: item.id
-                          })"><i [class]="button?.style" [title]="button?.title"></i>&nbsp;&nbsp;
-                            </a>
+                            <div>
+                                <a *ngFor="let button of field?.value" (click)="emitEvent({
+                                                            event: button.event,
+                                                            id: item.id
+                                                          })"><i [class]="button?.style"
+                                        [title]="button?.title"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+                                </a>
+                            </div>
                         </td>
                         <td *ngIf="data.header[j].type=='buttons'">
-                            <button *ngFor="let button of field?.value" [class]="button?.style" (click)="emitEvent({
-                            event: button.event,
-                            id: item.id
-                          })">{{button?.title}}</button>
+                            <div>
+                                <button *ngFor="let button of field?.value" [class]="button?.style" (click)="emitEvent({
+                                                        event: button.event,
+                                                        id: item.id
+                                                      })">{{button?.title}}</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                            </div>
                         </td>
                     </ng-container>
                     <ng-template #elseConditionvalue>

@@ -10,7 +10,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     for (let item of this.jsonData) {
-      console.log(item.id)
       this.data.items.push({
         id: item.id,
         data: [
@@ -34,7 +33,7 @@ export class AppComponent implements OnInit {
               {
                 style: "fa fa-file k-color-success",
                 title: "Ouvrir",
-                event: "update"
+                event: "read"
               },
               {
                 style: "fa fa-edit k-color-blue",

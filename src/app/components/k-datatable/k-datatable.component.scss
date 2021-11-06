@@ -1,10 +1,9 @@
-.table-container{
-    //overflow-x: auto;
-}
-
 table{
     border-collapse:collapse;
     border-spacing: 0;
+    .icon-add {
+            mask: url("/assets/icons/plus.svg");
+        }
     ul{
         padding-left: 20px;
     }   
@@ -40,10 +39,10 @@ table{
         }
         //icons
         .icon-arrow-bottom {
-            mask: url("/assets/icons/arrow.svg");
+            mask: url("/assets/icons/sort.svg");
         }
         .icon-arrow-top {
-            mask: url("/assets/icons/arrow.svg");
+            mask: url("/assets/icons/sort.svg");
             transform: scaleY(-1);
         }
     }
@@ -53,6 +52,12 @@ table{
             padding-top: 0.2rem;
             padding-bottom: 0.2rem;
             border-radius: 7px;
+        }
+        div{
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .icon-arrow-left {
             mask: url("/assets/icons/arrow.svg");
@@ -106,7 +111,7 @@ table{
         }
     }
     thead, tfoot{
-        background-color: #f1f1f1;
+        background-color: #FFFFFF;
     }
     thead{  
         tr:first-child{
