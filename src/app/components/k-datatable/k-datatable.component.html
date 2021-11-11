@@ -1,5 +1,15 @@
-<div id="k-table-container" *ngIf="data && filterTable && startedItems && orderStatus && pagination">
-    <table>
+<div id="k-table-container" *ngIf="data && filterTable && startedItems && orderStatus && pagination" [ngStyle]="{
+        'height': data?.style?.height && data.style.height != 'full' ?  data.style.height + 'px' : 'auto',
+        'max-height': data?.style?.height == 'full' ?  '100vh' : 'auto',
+        'overflow-y': data?.style?.overflowY ? data.style.overflowY : 'auto',
+        'width': data?.style?.width && data.style.width != 'full' ?  data.style.width + 'px' : 'auto',
+        'max-width': data?.style?.width == 'full' ?  '100%' : 'auto',
+        'max-width': data?.style?.width ?  data.style.width == 'full' ? '100%' : data.style.width + 'px' : 'auto',
+        'overflow-x': data?.style?.overflowX ? data.style.overflowX : 'auto'
+    }">
+    <table [ngStyle]="{
+        'width': data?.style?.width == 'full' ? '100%' : 'auto'
+    }">>
         <thead>
             <tr>
                 <td [attr.colspan]="data.header.length">
@@ -31,7 +41,8 @@
                 </td>
             </tr>
             <tr>
-                <th *ngFor="let header of data?.header; let i=index">
+                <th *ngFor="let header of data?.header; let i=index"
+                    [ngStyle]="{'width': header?.width ? header.width + 'px' : 'auto' }">
                     {{header?.name}}
                     <ng-container *ngIf="header?.order">
                         <i [ngClass]="{'k-icon-active': orderStatus.index==i && orderStatus.type =='DESC'}"
@@ -54,20 +65,22 @@
                 <ng-container *ngFor="let field of item?.data; let j=index">
                     <ng-container
                         *ngIf="!field.condition || evalCondition(field.condition, j); else elseConditionvalue">
-                        <td *ngIf="data.header[j].type=='text' || data.header[j].type=='number'">{{field?.value}}</td>
-                        <td *ngIf="data.header[j].type=='email'"><a href="mailto:{{field?.value}}">{{field?.value}}</a>
+                        <td *ngIf="data.header[j].type=='text' || data.header[j].type=='number'" [class]="field?.style">
+                            {{field?.value}}</td>
+                        <td *ngIf="data.header[j].type=='email'">
+                            <a href="mailto:{{field?.value}}" [class]="field?.style">{{field?.value}}</a>
                         </td>
-                        <td *ngIf="data.header[j].type=='link'"><a href="{{field?.url}}"
-                                target="_blank">{{field?.value}}</a>
+                        <td *ngIf="data.header[j].type=='link'">
+                            <a href="{{field?.url}}" target="_blank" [class]="field?.style">{{field?.value}}</a>
                         </td>
-                        <td *ngIf="data.header[j].type=='date'">{{field?.value}}</td>
-                        <td *ngIf="data.header[j].type=='bold'"><b>{{field?.value}}</b></td>
-                        <td *ngIf="data.header[j].type=='image'"><img [src]="field?.src" [width]="field?.width"
-                                [height]="field?.height" />
+                        <td *ngIf="data.header[j].type=='date'" [class]="field?.style">{{field?.value}}</td>
+                        <td *ngIf="data.header[j].type=='bold'" [class]="field?.style"><b>{{field?.value}}</b></td>
+                        <td *ngIf="data.header[j].type=='image'"><img [src]="field?.src" [class]="field?.style"
+                                [width]="field?.width" [height]="field?.height" />
                         </td>
                         <td *ngIf="data.header[j].type=='badge'"><span [class]="field.style">{{field.value}}</span></td>
                         <td *ngIf="data.header[j].type=='list'">
-                            <ul>
+                            <ul [class]="field?.style">
                                 <li *ngFor="let li of field.value">{{li}}</li>
                             </ul>
                         </td>

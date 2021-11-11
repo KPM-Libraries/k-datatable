@@ -54,6 +54,11 @@ export class AppComponent implements OnInit {
   }
 
   data = {
+    style: {
+      height: 500,
+      width: 1100,
+      overflowX: 'scroll'
+    },
     content: {
       add: 'Ajouter',
       filter: 'Filtrer',
@@ -65,7 +70,8 @@ export class AppComponent implements OnInit {
         name: "#",
         type: "number",
         order: true,
-        filter: true
+        filter: true,
+        width: 400
       },
       {
         name: "Nom",

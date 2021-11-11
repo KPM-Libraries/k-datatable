@@ -3,8 +3,8 @@ interface DataTable {
   content?: { add?: string, filter?: string, allItems?: string }
   addData: boolean,
   type?: string,
-  style?: string,
-  header: Array<{ name: string, type: string, order: boolean, filter: boolean }>,
+  style?: any,
+  header: Array<{ name: string, type: string, order: boolean, filter: boolean, width?: number }>,
   footer?: Array<string>,
   items: Array<{ id: number, data: Array<{ value: any, style?: string, url?: string, src?: string, width?: string, height?: string, condition?: string }> }>
 }
