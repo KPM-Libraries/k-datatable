@@ -1,16 +1,14 @@
 <div id="k-table-container" *ngIf="data && filterTable && startedItems && orderStatus && pagination" [ngStyle]="{
-        'height': data?.style?.height && data.style.height != 'full' ?  data.style.height + 'px' : 'auto',
-        'max-height': data?.style?.height == 'full' ?  '100vh' : 'auto',
+        'max-height': data?.style?.height ?  data.style.height == 'full' ? '100vh' : data.style.height + 'px' : 'auto',
         'overflow-y': data?.style?.overflowY ? data.style.overflowY : 'auto',
-        'width': data?.style?.width && data.style.width != 'full' ?  data.style.width + 'px' : 'auto',
-        'max-width': data?.style?.width == 'full' ?  '100%' : 'auto',
-        'max-width': data?.style?.width ?  data.style.width == 'full' ? '100%' : data.style.width + 'px' : 'auto',
+        'max-width': data?.style?.width && data.style.width != 'full' ?  data.style.width + 'px' : 'auto',
+        'width': data?.style?.width == 'full' ?  '100%' : 'auto',
         'overflow-x': data?.style?.overflowX ? data.style.overflowX : 'auto'
     }">
     <table [ngStyle]="{
         'width': data?.style?.width == 'full' ? '100%' : 'auto'
-    }">>
-        <thead>
+    }">
+        <thead [ngStyle]="{'position': data.style?.stickyHeader ? 'sticky' : 'auto'}">
             <tr>
                 <td [attr.colspan]="data.header.length">
                     <div>
@@ -109,7 +107,7 @@
                 </ng-container>
             </tr>
         </tbody>
-        <tfoot>
+        <tfoot [ngStyle]="{'position': data.style?.stickyFooter ? 'sticky' : 'auto'}">
             <tr *ngIf="data.footer">
                 <th *ngFor="let footer of data?.footer">{{footer}}</th>
             </tr>

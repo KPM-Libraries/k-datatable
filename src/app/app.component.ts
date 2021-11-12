@@ -54,11 +54,7 @@ export class AppComponent implements OnInit {
   }
 
   data = {
-    style: {
-      height: 500,
-      width: 1100,
-      overflowX: 'scroll'
-    },
+
     content: {
       add: 'Ajouter',
       filter: 'Filtrer',
