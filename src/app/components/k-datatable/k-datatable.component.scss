@@ -194,7 +194,7 @@
                     }
                 }
                 td{        
-                    span{
+                    label{
                         padding: 0.5rem;
                         padding-top: 0.1rem;
                         padding-bottom: 0.1rem;
@@ -204,6 +204,21 @@
                     ul{
                         padding-left: 20px;
                     } 
+                    .k-progress{
+                        position: relative;
+                        border-radius: 5px;
+                        width: 180px;
+                        height: 7px;
+                        background-color: #DDDDDD;
+                        div{
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            border-radius: 5px;
+                            height: 7px;   
+                            background-color: #2ECC40;
+                        }
+                    }
                 }
             }
         }        

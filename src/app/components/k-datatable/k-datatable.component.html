@@ -76,7 +76,8 @@
                         <td *ngIf="data.header[j].type=='image'"><img [src]="field?.src" [class]="field?.style"
                                 [width]="field?.width" [height]="field?.height" />
                         </td>
-                        <td *ngIf="data.header[j].type=='badge'"><span [class]="field.style">{{field.value}}</span></td>
+                        <td *ngIf="data.header[j].type=='badge'"><label [class]="field.style">{{field.value}}</label>
+                        </td>
                         <td *ngIf="data.header[j].type=='list'">
                             <ul [class]="field?.style">
                                 <li *ngFor="let li of field.value">{{li}}</li>
@@ -98,6 +99,13 @@
                                                         event: button.event,
                                                         id: item.id
                                                       })">{{button?.title}}</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                            </div>
+                        </td>
+                        <td *ngIf="data.header[j].type=='progress'" [class]="field?.style">
+                            <div class="k-progress">
+                                <div [ngStyle]="{'width': (field.value * 180) / 100 + 'px'  }">
+
+                                </div>
                             </div>
                         </td>
                     </ng-container>
