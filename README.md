@@ -1,6 +1,6 @@
-# KDatatable
+# K Datatable Package
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.5.
+A package that allows you to create your table and filter, order and show your data into multiple pages.
 
 ## Development server
 
