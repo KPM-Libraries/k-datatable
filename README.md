@@ -2,9 +2,9 @@
 
 A package that allows you to create your table and filter, order and show your data into multiple pages.
 
-## Development server
+## Install
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `npm k-datatable`.
 
 ## Code scaffolding
 
