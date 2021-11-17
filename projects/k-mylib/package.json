@@ -1,0 +1,23 @@
+{
+  "name": "k-datatable",
+  "version": "0.0.1",
+  "description": "",
+  "keywords": [
+    "datatable, table, data, pagination, filter, order"
+  ],
+  "author": {
+    "name": "ABBACI Khaled",
+    "email": "abbacikhaled@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KPM-Libraries/k-datatable"
+  },
+  "peerDependencies": {
+    "@angular/common": "^12.0.5",
+    "@angular/core": "^12.0.5"
+  },
+  "dependencies": {
+    "tslib": "^2.1.0"
+  }
+}

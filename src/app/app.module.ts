@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { KMylibModule } from 'projects/k-mylib/src/public-api';
 
 import { AppComponent } from './app.component';
 import { KDatatableComponent } from './components/k-datatable/k-datatable.component';
@@ -12,7 +13,8 @@ import { KDatatableComponent } from './components/k-datatable/k-datatable.compon
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    KMylibModule
   ],
   providers: [],
   bootstrap: [AppComponent]

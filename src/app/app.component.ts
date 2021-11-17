@@ -37,7 +37,7 @@ export class AppComponent implements OnInit {
                 event: "read"
               },
               {
-                style: "fa fa-edit k-color-blue",
+                style: "fa fa-edit k-color-primary",
                 title: "Modifier",
                 event: "update"
               },
