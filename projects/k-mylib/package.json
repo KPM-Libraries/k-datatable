@@ -1,7 +1,7 @@
 {
   "name": "k-datatable",
   "version": "0.0.1",
-  "description": "",
+  "description": "Un package qui vous premet de créer votre tableau et de filtere vos données, les ordonées ou naviguer entre les pages facilement.",
   "keywords": [
     "datatable, table, data, pagination, filter, order"
   ],
