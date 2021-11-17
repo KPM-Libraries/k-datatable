@@ -1,18 +1,14 @@
 # K Datatable Package
 
-A package that allows you to create your table and filter, order and show your data into multiple pages.
+An Angular package that allows you to create your table and filter, order and show your data into multiple pages.
 
 ## Install
 
 Run `npm k-datatable`.
 
-## Code scaffolding
+## Demo
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+<a href="http://localhost:4200/">Stackblitz</a>
 
 ## Running unit tests
 
