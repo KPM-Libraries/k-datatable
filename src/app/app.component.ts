@@ -17,10 +17,12 @@ export class AppComponent implements OnInit {
             value: item.id,
           },
           {
-            value: item.name
+            value: item.name,
+            style: "k-bg-primary"
           },
           {
-            value: item.email
+            value: new Date(`02/05/2022`).toLocaleDateString("en-En"),
+            date: new Date(`02/17/2022`)
           },
           {
             value: item.phone
@@ -77,13 +79,14 @@ export class AppComponent implements OnInit {
       },
       {
         name: "Email",
-        type: "email",
+        type: "date",
         order: true,
         filter: true
       },
       {
         name: "Téléphone",
         type: "progress",
+        style: "k-pers",
         order: true,
         filter: true
       },

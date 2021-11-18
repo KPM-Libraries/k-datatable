@@ -194,12 +194,16 @@
                     }
                 }
                 td{        
-                    label{
+                    .label{
                         padding: 0.5rem;
                         padding-top: 0.1rem;
                         padding-bottom: 0.1rem;
                         border-radius: 5px;
                         background-color: #DDDDDD;
+                    }
+                    .k-red{
+                        color: red;
+                        background-color: red;
                     }
                     ul{
                         padding-left: 20px;

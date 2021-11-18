@@ -5,7 +5,7 @@ interface DataTable {
   addData: boolean,
   type?: string,
   style?: any,
-  header: Array<{ name: string, type: string, order: boolean, filter: boolean, width?: number }>,
+  header: Array<{ name: string, type: string, order: boolean, filter: boolean, width?: number, style?: string }>,
   footer?: Array<string>,
   items: Array<{ id: number, data: Array<{ value: any, style?: string, url?: string, src?: string, width?: string, height?: string, condition?: string }> }>
 }
@@ -125,7 +125,7 @@ export class KMylibComponent implements OnInit {
             return -1
           switch (this.data.header[index]?.type) {
             case 'date':
-              return (new Date(elt1.data[index]?.value).getTime() - new Date(elt2.data[index]?.value).getTime()) * this.orderStatus.ascOrDescTable[1]
+              return (elt1.data[index]?.date.getTime() - elt2.data[index]?.date.getTime()) * this.orderStatus.ascOrDescTable[1]
             case 'list':
               return elt1.data[index]?.value.join('').toLowerCase() == elt2.data[index]?.value.join('').toLowerCase() ? 0 : elt1.data[index]?.value.join('').toLowerCase() < elt2.data[index]?.value.join('').toLowerCase() ? this.orderStatus.ascOrDescTable[0] : this.orderStatus.ascOrDescTable[1]
             default: //all other types

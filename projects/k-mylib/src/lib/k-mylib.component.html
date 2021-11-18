@@ -101,8 +101,8 @@
                                                       })">{{button?.title}}</button>&nbsp;&nbsp;&nbsp;&nbsp;
                             </div>
                         </td>
-                        <td *ngIf="data.header[j].type=='progress'" [class]="field?.style">
-                            <div class="k-progress">
+                        <td *ngIf="data.header[j].type=='progress'">
+                            <div class="k-progress" [class]="field?.style">
                                 <div [ngStyle]="{'width': (field.value * 180) / 100 + 'px'  }">
 
                                 </div>

@@ -76,7 +76,7 @@
                         <td *ngIf="data.header[j].type=='image'"><img [src]="field?.src" [class]="field?.style"
                                 [width]="field?.width" [height]="field?.height" />
                         </td>
-                        <td *ngIf="data.header[j].type=='badge'"><label [class]="field.style">{{field.value}}</label>
+                        <td *ngIf="data.header[j].type=='badge'"><label class="label k-red">{{field.value}}</label>
                         </td>
                         <td *ngIf="data.header[j].type=='list'">
                             <ul [class]="field?.style">
