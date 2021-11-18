@@ -108,14 +108,16 @@
                                 <a *ngFor="let button of field?.content" (click)="emitEvent({
                                                             event: button.event,
                                                             id: item.id
-                                                          })"><i [class]="button?.styleClass"
+                                                          })"><i
+                                        [ngClass]="[button?.styleClass ? button?.styleClass : '']"
                                         [title]="button?.title"></i>&nbsp;&nbsp;&nbsp;&nbsp;
                                 </a>
                             </div>
                         </td>
                         <td *ngIf="data.header[j].type=='buttons'">
                             <div>
-                                <button *ngFor="let button of field?.content" [class]="button?.styleClass" (click)="emitEvent({
+                                <button *ngFor="let button of field?.content"
+                                    [ngClass]="[button?.styleClass ? button?.styleClass : '']" (click)="emitEvent({
                                                         event: button.event,
                                                         id: item.id
                                                       })">{{button?.title}}</button>&nbsp;&nbsp;&nbsp;&nbsp;
