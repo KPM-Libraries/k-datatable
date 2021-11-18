@@ -12,10 +12,11 @@
             <tr>
                 <td [attr.colspan]="data.header.length">
                     <div>
-                        <i [title]="data?.content?.add? data?.content?.add : 'Add'"
+                        <i [ngStyle]="{'display': data?.addItem ? 'auto' : 'none'}"
+                            [title]="data?.translation?.add? data?.translation?.add : 'Add'"
                             (click)="emitEvent({event: 'add'})"></i>
                         <i *ngIf="filterTable.length>0"
-                            [title]="data?.content?.filter? data?.content?.filter : 'Filter'"
+                            [title]="data?.translation?.filter? data?.translation?.filter : 'Filter'"
                             (click)="isFilter=!isFilter" [ngClass]="{'k-icon-active': isFilter}"></i>
                     </div>
                     <div [ngClass]="{'k-disabled': pagination.total==0}">
@@ -24,7 +25,7 @@
                             <option value="20">20</option>
                             <option value="30">30</option>
                             <option value="50">50</option>
-                            <option value="-1">{{data?.content?.allItems? data?.content?.allItems : 'All'}}
+                            <option value="-1">{{data?.translation?.allItems? data?.translation?.allItems : 'All'}}
                             </option>
                         </select>
                         &nbsp;&nbsp;
@@ -63,29 +64,43 @@
                 <ng-container *ngFor="let field of item?.data; let j=index">
                     <ng-container
                         *ngIf="!field.condition || evalCondition(field.condition, j); else elseConditionvalue">
-                        <td *ngIf="data.header[j].type=='text' || data.header[j].type=='number'" [class]="field?.style">
-                            {{field?.value}}</td>
-                        <td *ngIf="data.header[j].type=='email'">
-                            <a href="mailto:{{field?.value}}" [class]="field?.style">{{field?.value}}</a>
+                        <td *ngIf="data.header[j].type=='text' || data.header[j].type=='number'"
+                            [ngClass]="[field?.style ? field?.style : '']">
+                            {{field?.content}}</td>
+                        <td *ngIf="data.header[j].type=='email'" [ngClass]="[field?.style ? field?.style : '']">
+                            <a href="mailto:{{field?.content}}">{{field?.content}}</a>
                         </td>
-                        <td *ngIf="data.header[j].type=='link'">
-                            <a href="{{field?.url}}" target="_blank" [class]="field?.style">{{field?.value}}</a>
+                        <td *ngIf="data.header[j].type=='link'" [ngClass]="[field?.style ? field?.style : '']">
+                            <a href="{{field?.content?.url}}" target="_blank">{{field?.content?.value}}</a>
                         </td>
-                        <td *ngIf="data.header[j].type=='date'" [class]="field?.style">{{field?.value}}</td>
-                        <td *ngIf="data.header[j].type=='bold'" [class]="field?.style"><b>{{field?.value}}</b></td>
-                        <td *ngIf="data.header[j].type=='image'"><img [src]="field?.src" [class]="field?.style"
-                                [width]="field?.width" [height]="field?.height" />
+                        <td *ngIf="data.header[j].type=='date'" [ngClass]="[field?.style ? field?.style : '']">
+                            {{field?.content?.value}}
                         </td>
-                        <td *ngIf="data.header[j].type=='badge'"><label [class]="field.style">{{field.value}}</label>
+                        <td *ngIf="data.header[j].type=='bold'" [ngClass]="[field?.style ? field?.style : '']">
+                            <b>{{field?.content}}</b>
                         </td>
-                        <td *ngIf="data.header[j].type=='list'">
-                            <ul [class]="field?.style">
-                                <li *ngFor="let li of field.value">{{li}}</li>
+                        <td *ngIf="data.header[j].type=='image'" [ngClass]="[field?.style ? field?.style : '']">
+                            <img [src]="field?.content?.src" [width]="field?.content?.width"
+                                [height]="field?.content?.height" />
+                        </td>
+                        <td *ngIf="data.header[j].type=='badge'" [ngClass]="[field?.style ? field?.style : '']">
+                            <label>{{field?.content}}</label>
+                        </td>
+                        <td *ngIf="data.header[j].type=='list'" [ngClass]="[field?.style ? field?.style : '']">
+                            <ul>
+                                <li *ngFor="let li of field?.content">{{li}}</li>
                             </ul>
+                        </td>
+                        <td *ngIf="data.header[j].type=='progress'" [ngClass]="[field?.style ? field?.style : '']">
+                            <div class="k-progress">
+                                <div [ngStyle]="{'width': (field?.content * 180) / 100 + 'px'  }">
+
+                                </div>
+                            </div>
                         </td>
                         <td *ngIf="data.header[j].type=='mini-buttons'">
                             <div>
-                                <a *ngFor="let button of field?.value" (click)="emitEvent({
+                                <a *ngFor="let button of field?.content" (click)="emitEvent({
                                                             event: button.event,
                                                             id: item.id
                                                           })"><i [class]="button?.style"
@@ -95,17 +110,10 @@
                         </td>
                         <td *ngIf="data.header[j].type=='buttons'">
                             <div>
-                                <button *ngFor="let button of field?.value" [class]="button?.style" (click)="emitEvent({
+                                <button *ngFor="let button of field?.content" [class]="button?.style" (click)="emitEvent({
                                                         event: button.event,
                                                         id: item.id
                                                       })">{{button?.title}}</button>&nbsp;&nbsp;&nbsp;&nbsp;
-                            </div>
-                        </td>
-                        <td *ngIf="data.header[j].type=='progress'">
-                            <div class="k-progress" [class]="field?.style">
-                                <div [ngStyle]="{'width': (field.value * 180) / 100 + 'px'  }">
-
-                                </div>
                             </div>
                         </td>
                     </ng-container>

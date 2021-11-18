@@ -14,25 +14,28 @@ export class AppComponent implements OnInit {
         id: item.id,
         data: [
           {
-            value: item.id,
+            content: item.id,
           },
           {
-            value: item.name,
-            style: "k-bg-primary"
+            content: item.name
           },
           {
-            value: new Date(`02/05/2022`).toLocaleDateString("en-En"),
-            date: new Date(`02/17/2022`)
+            content: {
+              value: new Date(`02/05/2022`).toLocaleDateString("en-En"),
+              date: new Date(`02/17/2022`)
+            }
           },
           {
-            value: item.phone
+            content: item.phone
           },
           {
-            value: item.website,
-            url: `https://${item.website}`
+            content: {
+              value: item.website,
+              url: `https://${item.website}`
+            }
           },
           {
-            value: [
+            content: [
               {
                 style: "fa fa-file k-color-success",
                 title: "Ouvrir",
@@ -56,20 +59,18 @@ export class AppComponent implements OnInit {
   }
 
   data = {
-
-    content: {
+    translation: {
       add: 'Ajouter',
       filter: 'Filtrer',
       allItems: 'Tous'
     },
-    addData: true,
+    addItem: true,
     header: [
       {
         name: "#",
         type: "number",
         order: true,
-        filter: true,
-        width: 400
+        filter: true
       },
       {
         name: "Nom",
@@ -86,7 +87,6 @@ export class AppComponent implements OnInit {
       {
         name: "Téléphone",
         type: "progress",
-        style: "k-pers",
         order: true,
         filter: true
       },

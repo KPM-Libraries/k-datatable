@@ -1,13 +1,17 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 interface DataTable {
-  content?: { add?: string, filter?: string, allItems?: string }
-  addData: boolean,
-  type?: string,
+  translation?: { add?: string, filter?: string, allItems?: string }
+  addItem?: boolean,
   style?: any,
-  header: Array<{ name: string, type: string, order: boolean, filter: boolean, width?: number, style?: string }>,
+  header: Array<{ name: string, type: string, order: boolean, filter: boolean, width?: number, style?: { width?: number } }>,
   footer?: Array<string>,
-  items: Array<{ id: number, data: Array<{ value: any, style?: string, url?: string, src?: string, width?: string, height?: string, condition?: string }> }>
+  items: Array<{
+    id: number,
+    data: Array<{
+      content: any, style?: string, condition?: string
+    }>
+  }>
 }
 
 @Component({
@@ -19,7 +23,6 @@ export class KMylibComponent implements OnInit {
 
   //IO variables
   @Input() data: DataTable = {
-    addData: false,
     header: [],
     items: []
   }
@@ -85,19 +88,25 @@ export class KMylibComponent implements OnInit {
       if (this.filterTable[i] != null && this.filterTable[i] != '') {
         switch (this.data.header[i]?.type) {
           case 'list':
-            if (!this.filterInsideList(item[i]?.value, this.filterTable[i].toLowerCase()))
+            if (!this.filterInsideList(item[i]?.content, this.filterTable[i].toLowerCase()))
               return false
             break
           case 'image':
-            if (!item[i]?.value?.src.includes(this.filterTable[i]))
+            if (!item[i]?.content?.src.includes(this.filterTable[i]))
               return false
             break
           case 'number':
-            if (item[i].value != this.filterTable[i])
+          case 'progress':
+            if (item[i].content != this.filterTable[i])
+              return false
+            break
+          case 'date':
+          case 'link':
+            if (!item[i]?.content?.value.toLowerCase().includes(this.filterTable[i].toLowerCase()))
               return false
             break
           default: //all other types
-            if (!item[i]?.value.toLowerCase().includes(this.filterTable[i].toLowerCase()))
+            if (!item[i]?.content.toLowerCase().includes(this.filterTable[i].toLowerCase()))
               return false
             break
         }
@@ -121,15 +130,19 @@ export class KMylibComponent implements OnInit {
       this.orderStatus.ascOrDescTable = type == 'ASC' ? [-1, 1] : type == 'DESC' ? [1, -1] : []
       if (this.orderStatus.ascOrDescTable.length > 0)
         this.data.items = this.data?.items.sort((elt1: any, elt2: any): number => {
-          if (typeof elt1.data[index]?.value != typeof elt2.data[index]?.value)
+          if (typeof elt1.data[index]?.content != typeof elt2.data[index]?.content)
             return -1
           switch (this.data.header[index]?.type) {
             case 'date':
-              return (elt1.data[index]?.date.getTime() - elt2.data[index]?.date.getTime()) * this.orderStatus.ascOrDescTable[1]
+              return (elt1.data[index]?.content?.date.getTime() - elt2.data[index]?.content?.date.getTime()) * this.orderStatus.ascOrDescTable[1]
+            case 'link':
+              return elt1.data[index]?.content?.value.toString().toLowerCase() == elt2.data[index]?.content?.value.toString().toLowerCase() ? 0 : elt1.data[index]?.content?.value.toString().toLowerCase() < elt2.data[index]?.content?.value.toString().toLowerCase() ? this.orderStatus.ascOrDescTable[0] : this.orderStatus.ascOrDescTable[1]
             case 'list':
-              return elt1.data[index]?.value.join('').toLowerCase() == elt2.data[index]?.value.join('').toLowerCase() ? 0 : elt1.data[index]?.value.join('').toLowerCase() < elt2.data[index]?.value.join('').toLowerCase() ? this.orderStatus.ascOrDescTable[0] : this.orderStatus.ascOrDescTable[1]
+              return elt1.data[index]?.content.join('').toLowerCase() == elt2.data[index]?.content.join('').toLowerCase() ? 0 : elt1.data[index]?.content.join('').toLowerCase() < elt2.data[index]?.content.join('').toLowerCase() ? this.orderStatus.ascOrDescTable[0] : this.orderStatus.ascOrDescTable[1]
+            case 'image':
+              return elt1.data[index]?.content?.src.toString().toLowerCase() == elt2.data[index]?.content?.src.toString().toLowerCase() ? 0 : elt1.data[index]?.content?.src.toString().toLowerCase() < elt2.data[index]?.content?.src.toString().toLowerCase() ? this.orderStatus.ascOrDescTable[0] : this.orderStatus.ascOrDescTable[1]
             default: //all other types
-              return elt1.data[index]?.value.toString().toLowerCase() == elt2.data[index]?.value.toString().toLowerCase() ? 0 : elt1.data[index]?.value.toString().toLowerCase() < elt2.data[index]?.value.toString().toLowerCase() ? this.orderStatus.ascOrDescTable[0] : this.orderStatus.ascOrDescTable[1]
+              return elt1.data[index]?.content.toString().toLowerCase() == elt2.data[index]?.content.toString().toLowerCase() ? 0 : elt1.data[index]?.content.toString().toLowerCase() < elt2.data[index]?.content.toString().toLowerCase() ? this.orderStatus.ascOrDescTable[0] : this.orderStatus.ascOrDescTable[1]
           }
         })
     } else {
@@ -152,7 +165,7 @@ export class KMylibComponent implements OnInit {
   }
 
   changeNumberOfElementsPerPage(event: any) {
-    this.setPagination(+event?.target?.value)
+    this.setPagination(+event?.target?.content)
   }
 
   //evaluate if some condition is true
