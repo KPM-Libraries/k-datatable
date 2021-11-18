@@ -37,17 +37,17 @@ export class AppComponent implements OnInit {
           {
             content: [
               {
-                style: "fa fa-file k-color-success",
+                styleClass: "fa fa-file k-color-success",
                 title: "Ouvrir",
                 event: "read"
               },
               {
-                style: "fa fa-edit k-color-primary",
+                styleClass: "fa fa-edit k-color-primary",
                 title: "Modifier",
                 event: "update"
               },
               {
-                style: "fa fa-trash k-color-danger",
+                styleClass: "fa fa-trash k-color-danger",
                 title: "Supprimer",
                 event: "delete"
               }

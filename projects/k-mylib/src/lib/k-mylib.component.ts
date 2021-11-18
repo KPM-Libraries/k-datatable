@@ -4,12 +4,12 @@ interface DataTable {
   translation?: { add?: string, filter?: string, allItems?: string }
   addItem?: boolean,
   style?: any,
-  header: Array<{ name: string, type: string, order: boolean, filter: boolean, width?: number, style?: { width?: number } }>,
+  header: Array<{ name: string, type: string, order: boolean, filter: boolean, width?: number, styleClass?: { width?: number } }>,
   footer?: Array<string>,
   items: Array<{
     id: number,
     data: Array<{
-      content: any, style?: string, condition?: string
+      content: any, styleClass?: string, condition?: string
     }>
   }>
 }
