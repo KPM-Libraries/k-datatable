@@ -67,11 +67,13 @@
                         <td *ngIf="data.header[j].type=='text' || data.header[j].type=='number'"
                             [ngClass]="[field?.style ? field?.style : '']">
                             {{field?.content}}</td>
-                        <td *ngIf="data.header[j].type=='email'" [ngClass]="[field?.style ? field?.style : '']">
-                            <a href="mailto:{{field?.content}}">{{field?.content}}</a>
+                        <td *ngIf="data.header[j].type=='email'">
+                            <a [ngClass]="[field?.style ? field?.style : '']"
+                                href="mailto:{{field?.content}}">{{field?.content}}</a>
                         </td>
-                        <td *ngIf="data.header[j].type=='link'" [ngClass]="[field?.style ? field?.style : '']">
-                            <a href="{{field?.content?.url}}" target="_blank">{{field?.content?.value}}</a>
+                        <td *ngIf="data.header[j].type=='link'">
+                            <a href="{{field?.content?.url}}" target="_blank"
+                                [ngClass]="[field?.style ? field?.style : '']">{{field?.content?.value}}</a>
                         </td>
                         <td *ngIf="data.header[j].type=='date'" [ngClass]="[field?.style ? field?.style : '']">
                             {{field?.content?.value}}
@@ -79,20 +81,20 @@
                         <td *ngIf="data.header[j].type=='bold'" [ngClass]="[field?.style ? field?.style : '']">
                             <b>{{field?.content}}</b>
                         </td>
-                        <td *ngIf="data.header[j].type=='image'" [ngClass]="[field?.style ? field?.style : '']">
+                        <td *ngIf="data.header[j].type=='image'">
                             <img [src]="field?.content?.src" [width]="field?.content?.width"
-                                [height]="field?.content?.height" />
+                                [height]="field?.content?.height" [ngClass]="[field?.style ? field?.style : '']" />
                         </td>
-                        <td *ngIf="data.header[j].type=='badge'" [ngClass]="[field?.style ? field?.style : '']">
-                            <label>{{field?.content}}</label>
+                        <td *ngIf="data.header[j].type=='badge'">
+                            <label [ngClass]="[field?.style ? field?.style : '']">{{field?.content}}</label>
                         </td>
-                        <td *ngIf="data.header[j].type=='list'" [ngClass]="[field?.style ? field?.style : '']">
-                            <ul>
+                        <td *ngIf="data.header[j].type=='list'">
+                            <ul [ngClass]="[field?.style ? field?.style : '']">
                                 <li *ngFor="let li of field?.content">{{li}}</li>
                             </ul>
                         </td>
-                        <td *ngIf="data.header[j].type=='progress'" [ngClass]="[field?.style ? field?.style : '']">
-                            <div class="k-progress">
+                        <td *ngIf="data.header[j].type=='progress'">
+                            <div class="k-progress" [ngClass]="[field?.style ? field?.style : '']">
                                 <div [ngStyle]="{'width': (field?.content * 180) / 100 + 'px'  }">
 
                                 </div>

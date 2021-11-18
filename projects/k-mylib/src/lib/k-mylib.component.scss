@@ -184,7 +184,9 @@
                         padding: 0.6rem;
                         padding-top: 0.2rem;
                         padding-bottom: 0.2rem;
-                        border-radius: 5px;
+                        border-radius: 5px;                        
+                        margin-left: 0.4rem;
+                        margin-right: 0.4rem;
                     }                     
                     div{
                         height: 100%;
@@ -225,6 +227,7 @@
     
     .k-bg-primary{
         background-color: #007495;
+        color: #FFFFFF;
     }
 
     .k-color-primary{
@@ -237,6 +240,7 @@
 
     .k-bg-success{
         background-color: #18cb81;
+        color: #FFFFFF;
     }
 
     .k-color-success{
@@ -249,6 +253,7 @@
 
     .k-bg-warning{
         background-color: #f3cb12;
+        color: #000000;
     }
 
     .k-color-warning{
@@ -261,6 +266,7 @@
 
     .k-bg-danger{
         background-color: #cc3f52;
+        color: #FFFFFF;
     }
 
     .k-color-danger{
@@ -273,6 +279,7 @@
 
     .k-bg-dark{
         background-color: #1a3c55;
+        color: #FFFFFF;
     }
 
     .k-color-dark{
@@ -285,6 +292,7 @@
 
     .k-bg-light{
         background-color: #dae8f5;
+        color: #000000;
     }
 
     .k-color-light{
