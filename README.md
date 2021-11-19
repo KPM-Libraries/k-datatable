@@ -166,10 +166,19 @@ Then add ```<lib-k-mylib>``` component to your component HTML file
 
 ## Data options
 
-Attempt | #1 | #2 | #3 | #4 | #5 | #6 | #7 | #8 | #9 | #10 | #11
---- | --- | --- | --- |--- |--- |--- |--- |--- |--- |--- |---
-Seconds | 301 | 283 | 290 | 286 | 289 | 285 | 287 | 287 | 272 | 276 | 269
+## Translation
 
+Option | Description | Values
+--- | --- | --- |
+add | Add button title | String 
+--- | --- | --- |
+filter | Filter button title | String 
+--- | --- | --- |
+allItems | All items select option text | String 
+--- | --- | --- |
+totalItems | Total number of items text | String 
+--- | --- | --- |
+show | Show items select field text | String 
 
 ## Demo
 
