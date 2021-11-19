@@ -4,7 +4,15 @@ An Angular package that allows you to create your table and filter, order and sh
 
 ## Install
 
-Run `npm k-datatable`.
+To install this library with npm, run below command:
+
+`npm k-datatable`
+
+```
+function test() {
+  console.log("notice the blank line before this function?");
+}
+```
 
 ## Demo
 
