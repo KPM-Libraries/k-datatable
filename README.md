@@ -194,17 +194,16 @@ textAlign | Text alignment | String (CSS text-align options) | left
 Option | Description | Values | Default value
 --- | --- | --- | ---
 itemsPerPage | Number of showed items per page | Number | 10
-showedItems | Number of showed items per page select options | Array<Number> | [10, 20, 30, 50, 100]
+showedItems | Number of showed items per page select options | Array of Number | [10, 20, 30, 50, 100]
 
-
- view: {
-      itemsPerPage: ,
-      : 
-    },
-
-
-
-
+### Header options
+Option | Description | Values | Default value
+--- | --- | --- | ---
+name | Name of column | String | 
+type | Type of column data | Enumerate | ['number', 'text', 'bold', 'badge', 'date', 'email', 'link', 'progress', 'button', 'mini-buttons']
+Filter | Apply filter in column | Boolean | 
+Order | Sort data by column data | Boolean | 
+Width | Column width | Number (pixels) | auto
 
 ## Demo
 
