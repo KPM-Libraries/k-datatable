@@ -21,6 +21,8 @@
                             (click)="isFilter=!isFilter" [ngClass]="{'k-icon-active': isFilter}"></i>
                     </div>
                     <div [ngClass]="{'k-disabled': pagination.total==0}">
+                        {{data?.translation?.show? data?.translation?.show : 'Show'}}
+                        &nbsp;&nbsp;
                         <select (change)="changeNumberOfElementsPerPage($event)"
                             [(ngModel)]="pagination.elementsPerPage">
                             <ng-container *ngIf="!data?.view?.showedItems || !data?.view?.showedItems?.length">
@@ -35,6 +37,9 @@
                             <option value="-1">{{data?.translation?.allItems? data?.translation?.allItems : 'All'}}
                             </option>
                         </select>
+                        &nbsp;&nbsp;
+                        | {{data?.translation?.totalItems? data?.translation?.totalItems : 'Total items'}} :
+                        {{items.length}}
                         &nbsp;&nbsp;
                         <i
                             (click)="pagination.current = pagination.current == 1 ? pagination.total : pagination.current - 1"></i>

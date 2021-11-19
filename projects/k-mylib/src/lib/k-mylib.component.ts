@@ -1,7 +1,13 @@
 import { Component, Input, OnChanges, Output, EventEmitter, SimpleChanges } from '@angular/core';
 
 interface DataTable {
-  translation?: { add?: string, filter?: string, allItems?: string }
+  translation?: {
+    add?: string,
+    filter?: string,
+    allItems?: string,
+    totalItems?: string,
+    show?: string
+  }
   addItem?: boolean,
   style?: any,
   view?: {

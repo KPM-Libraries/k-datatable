@@ -13,7 +13,9 @@ export class AppComponent implements OnInit {
     translation: {
       add: 'Add',
       filter: 'Filter',
-      allItems: 'All'
+      allItems: 'All',
+      totalItems: 'Total items',
+      show: 'Show'
     },
     style: {
       height: 466,
