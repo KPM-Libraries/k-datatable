@@ -29,13 +29,34 @@ export class AppModule { }
 
 ```
 
-Then setup your component html file as below
+Setup your component as below :
 
+First prépare your data in your component TS file
+
+```
+import { KMylibModule } from 'projects/k-mylib/src/public-api';
+
+@NgModule({
+  declarations: [
+    ...
+  ],
+  imports: [
+    ...
+    KMylibModule,
+    ...
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+```
+
+Then add ```<lib-k-mylib>``` component to your component HTML file
+  
 ```
 <lib-k-mylib [data]="data" (event)="event($event)"></lib-k-mylib>
 ```
-
-
 
 ## Demo
 
