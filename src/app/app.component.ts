@@ -66,7 +66,8 @@ export class AppComponent implements OnInit {
         name: "Progress",
         type: "progress",
         order: true,
-        filter: true
+        filter: true,
+        width: 180
       },
       {
         name: "Birthday",
