@@ -3,7 +3,8 @@
         'overflow-y': data?.style?.overflowY ? data.style.overflowY : 'auto',
         'max-width': data?.style?.width && data.style.width != 'full' ?  data.style.width + 'px' : 'auto',
         'width': data?.style?.width == 'full' ?  '100%' : 'auto',
-        'overflow-x': data?.style?.overflowX ? data.style.overflowX : 'auto'
+        'overflow-x': data?.style?.overflowX ? data.style.overflowX : 'auto',
+        'text-align': data?.style?.textAlign ? data.style.textAlign : 'left'
     }">
     <table [ngStyle]="{
         'width': data?.style?.width == 'full' ? '100%' : 'auto'
@@ -14,7 +15,7 @@
                     <div>
                         <i [ngStyle]="{'display': data?.addItem ? 'auto' : 'none'}"
                             [title]="data?.translation?.add? data?.translation?.add : 'Add'"
-                            (click)="emitEvent({event: 'add'})"></i>
+                            (click)="emitEvent({name: 'add'})"></i>
                         <i *ngIf="filterTable.length>0"
                             [title]="data?.translation?.filter? data?.translation?.filter : 'Filter'"
                             (click)="isFilter=!isFilter" [ngClass]="{'k-icon-active': isFilter}"></i>
@@ -106,7 +107,7 @@
                         <td *ngIf="data.header[j].type=='mini-buttons'">
                             <div>
                                 <a *ngFor="let button of field?.content" (click)="emitEvent({
-                                                            event: button.event,
+                                                            name: button.event,
                                                             outputData: item.inputData
                                                           })"><i
                                         [ngClass]="[button?.styleClass ? button?.styleClass : '']"
@@ -118,7 +119,7 @@
                             <div>
                                 <button *ngFor="let button of field?.content"
                                     [ngClass]="[button?.styleClass ? button?.styleClass : '']" (click)="emitEvent({
-                                                        event: button.event,
+                                                        name: button.event,
                                                         outputData: item.inputData
                                                       })">{{button?.title}}</button>&nbsp;&nbsp;&nbsp;&nbsp;
                             </div>

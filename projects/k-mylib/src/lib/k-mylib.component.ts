@@ -1,9 +1,13 @@
-import { Component, Input, OnInit, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, Output, EventEmitter, SimpleChanges } from '@angular/core';
 
 interface DataTable {
   translation?: { add?: string, filter?: string, allItems?: string }
   addItem?: boolean,
   style?: any,
+  view?: {
+    itemPerPage?: number,
+    showedItems?: Array<number>
+  }
   header: Array<{ name?: string, type: string, order: boolean, filter: boolean, width?: number, styleClass?: { width?: number } }>,
   footer?: Array<string>,
   items: Array<{
@@ -20,7 +24,7 @@ interface DataTable {
   styleUrls: ['./k-mylib.component.scss']
 })
 
-export class KMylibComponent implements OnInit, OnChanges {
+export class KMylibComponent implements OnChanges {
 
   //IO variables
   @Input() data: DataTable = {
@@ -40,9 +44,7 @@ export class KMylibComponent implements OnInit, OnChanges {
   constructor() { }
 
   ngOnChanges(changes: SimpleChanges): void {
-  }
 
-  ngOnInit(): void {
     //init filter table with the number of columns length
     this.filterTable = new Array(this.data?.header?.length)
 
@@ -60,8 +62,9 @@ export class KMylibComponent implements OnInit, OnChanges {
     this.pagination = {
       elementsPerPage: 10,
       current: 1,
-      total: Math.ceil(this.data.items.length / 10)
+      total: Math.ceil(changes.data.currentValue.items.length / 10)
     }
+
   }
 
   //component functions
@@ -99,14 +102,15 @@ export class KMylibComponent implements OnInit, OnChanges {
             if (!item[i]?.content?.src.includes(this.filterTable[i]))
               return false
             break
-          case 'number':
-          case 'progress':
-            if (item[i].content != this.filterTable[i])
-              return false
-            break
           case 'date':
           case 'link':
             if (!item[i]?.content?.value.toLowerCase().includes(this.filterTable[i].toLowerCase()))
+              return false
+            break
+          case 'number':
+          case 'progress':
+            console.log(item[i]?.content as string)
+            if (!('' + item[i]?.content).toLowerCase().includes(this.filterTable[i].toLowerCase()))
               return false
             break
           default: //all other types

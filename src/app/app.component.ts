@@ -65,10 +65,11 @@ export class AppComponent implements OnInit {
         filter: true
       },
       {
-        name: "Created at",
+        name: "Birthday",
         type: "date",
         order: true,
-        filter: true
+        filter: true,
+        width: 80
       },
       {
         name: "More details",
@@ -5084,64 +5085,136 @@ export class AppComponent implements OnInit {
   constructor(private dataSevice: DataService) { }
 
   ngOnInit(): void {
-    for (let item of this.json) {
-      this.data.items.push({
-        inputData: item,
-        data: [
-          {
-            content: item?.reference,
-          },
-          {
-            content: item?.name
-          },
-          {
-            content: item?.email
-          },
-          {
-            content: item?.status
-          },
-          {
-            content: item?.country
-          },
-          {
-            content: item?.progress
-          },
-          {
-            content: {
-              value: new Date(item?.createdAt).toLocaleDateString("en-En"),
-              date: new Date(item?.createdAt)
-            }
-          },
-          {
-            content: [
+    // for (let item of this.json) {
+    //   this.data.items.push({
+    //     inputData: item,
+    //     data: [
+    //       {
+    //         content: item?.reference,
+    //       },
+    //       {
+    //         content: item?.name
+    //       },
+    //       {
+    //         content: item?.email
+    //       },
+    //       {
+    //         content: item?.status,
+    //         styleClass: item?.status == 'Approved' ? 'k-bg-success' : item?.status == 'Unapproved' ? 'k-bg-danger' : null
+    //       },
+    //       {
+    //         content: item?.country
+    //       },
+    //       {
+    //         content: item?.progress
+    //       },
+    //       {
+    //         content: {
+    //           value: new Date(item?.createdAt).toLocaleDateString("en-En"),
+    //           date: new Date(item?.createdAt)
+    //         }
+    //       },
+    //       {
+    //         content: [
+    //           {
+    //             styleClass: "k-bg-warning",
+    //             title: "More details",
+    //             event: "showMore"
+    //           }
+    //         ]
+    //       },
+    //       {
+    //         content: [
+    //           {
+    //             styleClass: "fa fa-edit k-color-primary",
+    //             title: "Update",
+    //             event: "update"
+    //           },
+    //           {
+    //             styleClass: "fa fa-trash k-color-danger",
+    //             title: "Delete",
+    //             event: "delete"
+    //           }
+    //         ]
+    //       }
+    //     ]
+    //   })
+    // }
+
+    this.dataSevice.getData().subscribe(
+      (data) => {
+        for (let item of data) {
+          this.data.items.push({
+            inputData: item,
+            data: [
               {
-                styleClass: "k-bg-warning",
-                title: "More details",
-                event: "showMore"
-              }
-            ]
-          },
-          {
-            content: [
-              {
-                styleClass: "fa fa-edit k-color-primary",
-                title: "Update",
-                event: "update"
+                content: item?.reference,
               },
               {
-                styleClass: "fa fa-trash k-color-danger",
-                title: "Delete",
-                event: "delete"
+                content: item?.name
+              },
+              {
+                content: item?.email
+              },
+              {
+                content: item?.status,
+                styleClass: item?.status == 'Approved' ? 'k-bg-success' : item?.status == 'Unapproved' ? 'k-bg-danger' : null
+              },
+              {
+                content: item?.country
+              },
+              {
+                content: item?.progress
+              },
+              {
+                content: {
+                  value: new Date(item?.createdAt).toLocaleDateString("en-En"),
+                  date: new Date(item?.createdAt)
+                }
+              },
+              {
+                content: [
+                  {
+                    styleClass: "k-bg-warning",
+                    title: "More details",
+                    event: "showMore"
+                  }
+                ]
+              },
+              {
+                content: [
+                  {
+                    styleClass: "fa fa-edit k-color-primary",
+                    title: "Update",
+                    event: "update"
+                  },
+                  {
+                    styleClass: "fa fa-trash k-color-danger",
+                    title: "Delete",
+                    event: "delete"
+                  }
+                ]
               }
             ]
-          }
-        ]
-      })
-    }
+          })
+        }
+      }, (error) => {
+        console.log(error)
+        alert('Data not found.')
+      }
+    )
   }
 
   event(event: any) {
-    console.log(event)
+    switch (event?.name) {
+      case 'add': alert('Add a new element event.');
+        this.data.items = []
+
+        break
+      case 'showMore': alert('Show more details event.'); break
+      case 'update': alert('Update element event.'); break
+      case 'delete': alert('Delete element event.'); break
+    }
   }
 
 }
