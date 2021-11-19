@@ -21,6 +21,10 @@ export class AppComponent implements OnInit {
       stickyHeader: true,
       stickyFooter: true
     },
+    view: {
+      itemsPerPage: 10,
+      showedItems: [10, 20, 50, 100]
+    },
     addItem: true,
     header: [
       {
@@ -5208,7 +5212,7 @@ export class AppComponent implements OnInit {
   event(event: any) {
     switch (event?.name) {
       case 'add': alert('Add a new element event.');
-        this.data.items = []
+
 
         break
       case 'showMore': alert('Show more details event.'); break

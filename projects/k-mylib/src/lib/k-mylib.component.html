@@ -1,4 +1,4 @@
-<div id="k-table-container" *ngIf="data && filterTable && startedItems && orderStatus && pagination" [ngStyle]="{
+<div id="k-table-container" *ngIf="data && filterTable  && orderStatus && pagination" [ngStyle]="{
         'max-height': data?.style?.height ?  data.style.height == 'full' ? '100vh' : data.style.height + 'px' : 'auto',
         'overflow-y': data?.style?.overflowY ? data.style.overflowY : 'auto',
         'max-width': data?.style?.width && data.style.width != 'full' ?  data.style.width + 'px' : 'auto',
@@ -21,11 +21,17 @@
                             (click)="isFilter=!isFilter" [ngClass]="{'k-icon-active': isFilter}"></i>
                     </div>
                     <div [ngClass]="{'k-disabled': pagination.total==0}">
-                        <select (change)="changeNumberOfElementsPerPage($event)">
-                            <option value="10">10</option>
-                            <option value="20">20</option>
-                            <option value="30">30</option>
-                            <option value="50">50</option>
+                        <select (change)="changeNumberOfElementsPerPage($event)"
+                            [(ngModel)]="pagination.elementsPerPage">
+                            <ng-container *ngIf="!data?.view?.showedItems || !data?.view?.showedItems?.length">
+                                <option [ngValue]="10">10</option>
+                                <option [ngValue]="20">20</option>
+                                <option [ngValue]="30">30</option>
+                                <option [ngValue]="50">50</option>
+                            </ng-container>
+                            <ng-container *ngIf="data?.view?.showedItems && data?.view?.showedItems?.length">
+                                <option *ngFor="let si of data?.view?.showedItems " [ngValue]=si>{{si}}</option>
+                            </ng-container>
                             <option value="-1">{{data?.translation?.allItems? data?.translation?.allItems : 'All'}}
                             </option>
                         </select>
@@ -60,76 +66,80 @@
             </tr>
         </thead>
         <tbody>
-            <tr
-                *ngFor="let item of data?.items | slice: (pagination.current-1)*pagination.elementsPerPage : pagination.elementsPerPage != -1 ? pagination.current*pagination.elementsPerPage : data.items.length; let i = index">
-                <ng-container *ngFor="let field of item?.data; let j=index">
-                    <ng-container
-                        *ngIf="!field.condition || evalCondition(field.condition, j); else elseConditionvalue">
-                        <td *ngIf="data.header[j].type=='text' || data.header[j].type=='number'"
-                            [ngClass]="[field?.styleClass ? field?.styleClass : '']">
-                            {{field?.content}}</td>
-                        <td *ngIf="data.header[j].type=='email'">
-                            <a [ngClass]="[field?.styleClass ? field?.styleClass : '']"
-                                href="mailto:{{field?.content}}">{{field?.content}}</a>
-                        </td>
-                        <td *ngIf="data.header[j].type=='link'">
-                            <a href="{{field?.content?.url}}" target="_blank"
-                                [ngClass]="[field?.styleClass ? field?.styleClass : '']">{{field?.content?.value}}</a>
-                        </td>
-                        <td *ngIf="data.header[j].type=='date'"
-                            [ngClass]="[field?.styleClass ? field?.styleClass : '']">
-                            {{field?.content?.value}}
-                        </td>
-                        <td *ngIf="data.header[j].type=='bold'"
-                            [ngClass]="[field?.styleClass ? field?.styleClass : '']">
-                            <b>{{field?.content}}</b>
-                        </td>
-                        <td *ngIf="data.header[j].type=='image'">
-                            <img [src]="field?.content?.src" [width]="field?.content?.width"
-                                [height]="field?.content?.height" [alt]="field?.content?.alt"
-                                [ngClass]="[field?.styleClass ? field?.styleClass : '']" />
-                        </td>
-                        <td *ngIf="data.header[j].type=='badge'">
-                            <label [ngClass]="[field?.styleClass ? field?.styleClass : '']">{{field?.content}}</label>
-                        </td>
-                        <td *ngIf="data.header[j].type=='list'">
-                            <ul [ngClass]="[field?.styleClass ? field?.styleClass : '']">
-                                <li *ngFor="let li of field?.content">{{li}}</li>
-                            </ul>
-                        </td>
-                        <td *ngIf="data.header[j].type=='progress'">
-                            <div class="k-progress" [ngClass]="[field?.styleClass ? field?.styleClass : '']">
-                                <div [ngStyle]="{'width': (field?.content * 180) / 100 + 'px'  }">
+            <ng-container *ngIf="items && items.length>0">
+                <tr
+                    *ngFor="let item of items | slice: (pagination.current-1)*pagination.elementsPerPage : pagination.elementsPerPage != -1 ? pagination.current*pagination.elementsPerPage : items?.length; let i = index">
+                    <ng-container *ngFor="let field of item?.data; let j=index">
+                        <ng-container
+                            *ngIf="!field.condition || evalCondition(field.condition, j); else elseConditionvalue">
+                            <td *ngIf="data.header[j].type=='text' || data.header[j].type=='number'"
+                                [ngClass]="[field?.styleClass ? field?.styleClass : '']">
+                                {{field?.content}}</td>
+                            <td *ngIf="data.header[j].type=='email'">
+                                <a [ngClass]="[field?.styleClass ? field?.styleClass : '']"
+                                    href="mailto:{{field?.content}}">{{field?.content}}</a>
+                            </td>
+                            <td *ngIf="data.header[j].type=='link'">
+                                <a href="{{field?.content?.url}}" target="_blank"
+                                    [ngClass]="[field?.styleClass ? field?.styleClass : '']">{{field?.content?.value}}</a>
+                            </td>
+                            <td *ngIf="data.header[j].type=='date'"
+                                [ngClass]="[field?.styleClass ? field?.styleClass : '']">
+                                {{field?.content?.value}}
+                            </td>
+                            <td *ngIf="data.header[j].type=='bold'"
+                                [ngClass]="[field?.styleClass ? field?.styleClass : '']">
+                                <b>{{field?.content}}</b>
+                            </td>
+                            <td *ngIf="data.header[j].type=='image'">
+                                <img [src]="field?.content?.src" [width]="field?.content?.width"
+                                    [height]="field?.content?.height" [alt]="field?.content?.alt"
+                                    [ngClass]="[field?.styleClass ? field?.styleClass : '']" />
+                            </td>
+                            <td *ngIf="data.header[j].type=='badge'">
+                                <label
+                                    [ngClass]="[field?.styleClass ? field?.styleClass : '']">{{field?.content}}</label>
+                            </td>
+                            <td *ngIf="data.header[j].type=='list'">
+                                <ul [ngClass]="[field?.styleClass ? field?.styleClass : '']">
+                                    <li *ngFor="let li of field?.content">{{li}}</li>
+                                </ul>
+                            </td>
+                            <td *ngIf="data.header[j].type=='progress'">
+                                <div class="k-progress" [ngClass]="[field?.styleClass ? field?.styleClass : '']">
+                                    <div [ngStyle]="{'width': (field?.content * 180) / 100 + 'px'  }">
 
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
-                        <td *ngIf="data.header[j].type=='mini-buttons'">
-                            <div>
-                                <a *ngFor="let button of field?.content" (click)="emitEvent({
-                                                            name: button.event,
-                                                            outputData: item.inputData
-                                                          })"><i
+                            </td>
+                            <td *ngIf="data.header[j].type=='mini-buttons'">
+                                <div>
+                                    <a *ngFor="let button of field?.content" (click)="emitEvent({
+                                                                            name: button.event,
+                                                                            outputData: item.inputData
+                                                                          })"><i
+                                            [ngClass]="[button?.styleClass ? button?.styleClass : '']"
+                                            [title]="button?.title"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+                                    </a>
+                                </div>
+                            </td>
+                            <td *ngIf="data.header[j].type=='buttons'">
+                                <div>
+                                    <button *ngFor="let button of field?.content"
                                         [ngClass]="[button?.styleClass ? button?.styleClass : '']"
-                                        [title]="button?.title"></i>&nbsp;&nbsp;&nbsp;&nbsp;
-                                </a>
-                            </div>
-                        </td>
-                        <td *ngIf="data.header[j].type=='buttons'">
-                            <div>
-                                <button *ngFor="let button of field?.content"
-                                    [ngClass]="[button?.styleClass ? button?.styleClass : '']" (click)="emitEvent({
-                                                        name: button.event,
-                                                        outputData: item.inputData
-                                                      })">{{button?.title}}</button>&nbsp;&nbsp;&nbsp;&nbsp;
-                            </div>
-                        </td>
+                                        (click)="emitEvent({
+                                                                        name: button.event,
+                                                                        outputData: item.inputData
+                                                                      })">{{button?.title}}</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                </div>
+                            </td>
+                        </ng-container>
+                        <ng-template #elseConditionvalue>
+                            <td></td>
+                        </ng-template>
                     </ng-container>
-                    <ng-template #elseConditionvalue>
-                        <td></td>
-                    </ng-template>
-                </ng-container>
-            </tr>
+                </tr>
+            </ng-container>
         </tbody>
         <tfoot [ngStyle]="{'position': data.style?.stickyFooter ? 'sticky' : 'auto'}">
             <tr *ngIf="data.footer">

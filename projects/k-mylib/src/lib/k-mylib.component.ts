@@ -5,7 +5,7 @@ interface DataTable {
   addItem?: boolean,
   style?: any,
   view?: {
-    itemPerPage?: number,
+    itemsPerPage?: number,
     showedItems?: Array<number>
   }
   header: Array<{ name?: string, type: string, order: boolean, filter: boolean, width?: number, styleClass?: { width?: number } }>,
@@ -32,38 +32,55 @@ export class KMylibComponent implements OnChanges {
     items: []
   }
   @Output() event = new EventEmitter()
+  @Input() test: any
 
   //component variables
+  //component variables
+  items: any[] = []
   filterTable: any
   isFilter: boolean = false
-  startedItems: any
   orderStatus: any
   pagination: any
   selectedItems = new Array()
 
-  constructor() { }
+  previousLength = 0
+
+  constructor() {
+    setInterval(() => {
+      if (this.previousLength != this.data.items.length) {
+        this.previousLength = this.data.items.length
+        this.items = [...this.data.items]
+        this.filter()
+      }
+    }, 100);
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
 
-    //init filter table with the number of columns length
-    this.filterTable = new Array(this.data?.header?.length)
+    this.items = [...this.data.items]
 
-    //save started data items
-    this.startedItems = [...this.data.items]
+    if (changes.data.isFirstChange()) {
 
-    //init current order status
-    this.orderStatus = {
-      index: -1,
-      type: '',
-      ascOrDescTable: new Array<number>()
-    }
+      //init filter table with the number of columns length
+      this.filterTable = new Array(this.data?.header?.length)
 
-    //init pagination
-    this.pagination = {
-      elementsPerPage: 10,
-      current: 1,
-      total: Math.ceil(changes.data.currentValue.items.length / 10)
-    }
+      //init current order status
+      this.orderStatus = {
+        index: -1,
+        type: '',
+        ascOrDescTable: new Array<number>()
+      }
+
+      //init pagination
+      let elementsPerPage = this.data?.view?.itemsPerPage ? this.data.view.itemsPerPage : this.data?.view?.showedItems && this.data?.view?.showedItems[0] ? this.data?.view?.showedItems[0] : 10
+      this.pagination = {
+        elementsPerPage: elementsPerPage,
+        current: 1,
+        total: Math.ceil(this.items.length / elementsPerPage)
+      }
+
+    } else
+      this.filter()
 
   }
 
@@ -76,14 +93,14 @@ export class KMylibComponent implements OnChanges {
 
   //filter rows
   filter(): void {
-    this.data.items = [...this.startedItems]
+    this.items = [...this.data.items]
     if (this.orderStatus.index != -1)
       this.order(this.orderStatus.index, this.orderStatus.type, true)
 
     let i = 0
-    while (i < this.data.items.length)
-      if (!this.filterAccepted(this.data.items[i].data))
-        this.data.items.splice(i, 1)
+    while (i < this.items.length)
+      if (!this.filterAccepted(this.items[i].data))
+        this.items.splice(i, 1)
       else
         i++
     this.setPagination()
@@ -137,7 +154,7 @@ export class KMylibComponent implements OnChanges {
       this.orderStatus.type = type
       this.orderStatus.ascOrDescTable = type == 'ASC' ? [-1, 1] : type == 'DESC' ? [1, -1] : []
       if (this.orderStatus.ascOrDescTable.length > 0)
-        this.data.items = this.data?.items.sort((elt1: any, elt2: any): number => {
+        this.items = this.items.sort((elt1: any, elt2: any): number => {
           if (typeof elt1.data[index]?.content != typeof elt2.data[index]?.content)
             return -1
           switch (this.data.header[index]?.type) {
@@ -163,8 +180,8 @@ export class KMylibComponent implements OnChanges {
 
   //set pagination params
   setPagination(elementPerPage?: number): void {
-    let elementPerPageValue = !elementPerPage ? this.pagination.elementsPerPage : elementPerPage != -1 ? elementPerPage : this.data.items.length
-    let total = Math.ceil(this.data.items.length / elementPerPageValue)
+    let elementPerPageValue = !elementPerPage ? this.pagination.elementsPerPage : elementPerPage != -1 ? elementPerPage : this.items.length
+    let total = Math.ceil(this.items.length / elementPerPageValue)
     this.pagination = {
       elementsPerPage: elementPerPageValue,
       current: this.pagination.current <= total && this.pagination.current != 0 ? this.pagination.current : total,
@@ -178,7 +195,7 @@ export class KMylibComponent implements OnChanges {
 
   //evaluate if some condition is true
   evalCondition(condition: string, index: number) {
-    condition = condition.split("fields[").join("this.startedItems[index].data[")
+    condition = condition.split("fields[").join("this.data.items[index].data[")
     return eval(condition)
   }
 
