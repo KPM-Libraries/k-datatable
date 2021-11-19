@@ -179,8 +179,8 @@ show | Show items select field text | String | Show
 
 #### style
 
-Option | Description | Values
---- | --- | --- |
+Option | Description | Values | Default value
+--- | --- | --- | ---
 width | Table width | Number (pixels) or 'full' (100%) | auto
 height | Table width | Number (pixels) or 'full' (100vh) | auto
 overflowX | Horizontal overflow | String (CSS overflow options) | auto
