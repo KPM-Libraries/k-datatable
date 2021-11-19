@@ -29,7 +29,7 @@ export class AppModule { }
 
 ```
 
-Then setup your component http file as below
+Then setup your component html file as below
 
 ```
 <lib-k-mylib [data]="data" (event)="event($event)"></lib-k-mylib>
