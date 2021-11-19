@@ -189,7 +189,7 @@ export class KMylibComponent implements OnChanges {
 
   //set pagination params
   setPagination(elementPerPage?: number): void {
-    let elementPerPageValue = !elementPerPage ? this.pagination.elementsPerPage : elementPerPage != -1 ? elementPerPage : this.items.length
+    let elementPerPageValue = !elementPerPage ? this.pagination.elementsPerPage : elementPerPage
     let total = Math.ceil(this.items.length / elementPerPageValue)
     this.pagination = {
       elementsPerPage: elementPerPageValue,

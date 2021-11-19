@@ -34,7 +34,9 @@
                             <ng-container *ngIf="data?.view?.showedItems && data?.view?.showedItems?.length">
                                 <option *ngFor="let si of data?.view?.showedItems " [ngValue]=si>{{si}}</option>
                             </ng-container>
-                            <option value="-1">{{data?.translation?.allItems? data?.translation?.allItems : 'All'}}
+                            <option [ngValue]="this.data.items.length" selected>{{data?.translation?.allItems?
+                                data?.translation?.allItems :
+                                'All'}}
                             </option>
                         </select>
                         &nbsp;&nbsp;
