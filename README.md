@@ -171,13 +171,9 @@ Then add ```<lib-k-mylib>``` component to your component HTML file
 Option | Description | Values
 --- | --- | --- |
 add | Add button title | String 
---- | --- | --- |
 filter | Filter button title | String 
---- | --- | --- |
 allItems | All items select option text | String 
---- | --- | --- |
 totalItems | Total number of items text | String 
---- | --- | --- |
 show | Show items select field text | String 
 
 ## Demo
