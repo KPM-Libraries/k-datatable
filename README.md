@@ -8,11 +8,34 @@ To install this library with npm, run below command:
 
 `npm k-datatable`
 
+Then import KMylibModule module in your app.module.ts
+
 ```
-function test() {
-  console.log("notice the blank line before this function?");
-}
+import { KMylibModule } from 'projects/k-mylib/src/public-api';
+
+@NgModule({
+  declarations: [
+    ...
+  ],
+  imports: [
+    ...
+    KMylibModule,
+    ...
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
 ```
+
+Then setup your component http file as below
+
+```
+<lib-k-mylib [data]="data" (event)="event($event)"></lib-k-mylib>
+```
+
+
 
 ## Demo
 
