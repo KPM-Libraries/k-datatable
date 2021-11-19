@@ -10,7 +10,7 @@ To install this library with npm, run below command:
 
 Then import KMylibModule module in your app.module.ts
 
-```
+```ts
 import { KMylibModule } from 'projects/k-mylib/src/public-api';
 
 @NgModule({
@@ -33,7 +33,7 @@ Setup your component as below :
 
 First prepare your data in your component TS file
 
-```
+```ts
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -158,7 +158,7 @@ export class AppComponent implements OnInit {
 
 Then add ```<lib-k-mylib>``` component to your component HTML file
   
-```
+```html
 <lib-k-mylib [data]="data" (event)="event($event)"></lib-k-mylib>
 ```
 
