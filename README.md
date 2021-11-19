@@ -174,7 +174,21 @@ add | Add button title | String
 filter | Filter button title | String 
 allItems | All items select option text | String 
 totalItems | Total number of items text | String 
-show | Show items select field text | String 
+show | Show items select field text | String
+
+
+#### style
+
+Option | Description | Values
+--- | --- | --- |
+width | Table width | Number (pixels) or 'full' (100%)
+height | Table width | Number (pixels) or 'full' (100%)
+overflowX | Horizontal overflow | String (CSS overflow options)
+overflowY | Vertical overflow | String (CSS overflow options)
+overflowY | Vertical overflow | Boolean
+textAlign | Text alignment | String (CSS text-align options)
+
+
 
 ## Demo
 
