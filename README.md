@@ -11,6 +11,29 @@ To install this library with npm, run below command:
 Then import KMylibModule module in your app.module.ts
 
 ```
+import { KMylibModule } from 'projects/k-mylib/src/public-api';
+
+@NgModule({
+  declarations: [
+    ...
+  ],
+  imports: [
+    ...
+    KMylibModule,
+    ...
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+```
+
+Setup your component as below :
+
+First prepare your data in your component TS file
+
+```
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -131,29 +154,6 @@ export class AppComponent implements OnInit {
   }
 
 }
-```
-
-Setup your component as below :
-
-First prepare your data in your component TS file
-
-```
-import { KMylibModule } from 'projects/k-mylib/src/public-api';
-
-@NgModule({
-  declarations: [
-    ...
-  ],
-  imports: [
-    ...
-    KMylibModule,
-    ...
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
-export class AppModule { }
-
 ```
 
 Then add ```<lib-k-mylib>``` component to your component HTML file
