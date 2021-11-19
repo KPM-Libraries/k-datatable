@@ -1,7 +1,7 @@
 {
   "name": "k-datatable",
   "version": "0.0.1",
-  "description": "A package that allows you to create your table and filter, order and show your data into multiple pages.",
+  "description": "K-datatable is an Angular package that allows you to display your JSON data in an HTML table and edit, filter, sort or display it in many pages.",
   "keywords": [
     "datatable, table, data, pagination, filter, order"
   ],
@@ -14,8 +14,8 @@
     "url": "https://github.com/KPM-Libraries/k-datatable"
   },
   "peerDependencies": {
-    "@angular/common": "^12.0.5",
-    "@angular/core": "^12.0.5"
+    "@angular/common": "~13.0.2",
+    "@angular/compiler": "~13.0.2"
   },
   "dependencies": {
     "tslib": "^2.1.0"
