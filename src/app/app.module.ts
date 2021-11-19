@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -14,7 +15,8 @@ import { KDatatableComponent } from './components/k-datatable/k-datatable.compon
   imports: [
     BrowserModule,
     FormsModule,
-    KMylibModule
+    KMylibModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

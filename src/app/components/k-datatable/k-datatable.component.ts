@@ -4,7 +4,7 @@ interface DataTable {
   addData: boolean,
   type?: string,
   style?: any,
-  header: Array<{ name: string, type: string, order: boolean, filter: boolean, width?: number }>,
+  header: Array<{ name?: string, type: string, order: boolean, filter: boolean, width?: number }>,
   footer?: Array<string>,
   items: Array<{ id: number, data: Array<{ value: any, style?: string, url?: string, src?: string, width?: string, height?: string, condition?: string }> }>
 }

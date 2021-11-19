@@ -85,7 +85,7 @@
                         </td>
                         <td *ngIf="data.header[j].type=='image'">
                             <img [src]="field?.content?.src" [width]="field?.content?.width"
-                                [height]="field?.content?.height"
+                                [height]="field?.content?.height" [alt]="field?.content?.alt"
                                 [ngClass]="[field?.styleClass ? field?.styleClass : '']" />
                         </td>
                         <td *ngIf="data.header[j].type=='badge'">
@@ -107,7 +107,7 @@
                             <div>
                                 <a *ngFor="let button of field?.content" (click)="emitEvent({
                                                             event: button.event,
-                                                            id: item.id
+                                                            outputData: item.inputData
                                                           })"><i
                                         [ngClass]="[button?.styleClass ? button?.styleClass : '']"
                                         [title]="button?.title"></i>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -119,7 +119,7 @@
                                 <button *ngFor="let button of field?.content"
                                     [ngClass]="[button?.styleClass ? button?.styleClass : '']" (click)="emitEvent({
                                                         event: button.event,
-                                                        id: item.id
+                                                        outputData: item.inputData
                                                       })">{{button?.title}}</button>&nbsp;&nbsp;&nbsp;&nbsp;
                             </div>
                         </td>

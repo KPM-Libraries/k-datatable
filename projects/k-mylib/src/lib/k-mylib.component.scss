@@ -1,4 +1,5 @@
 #k-table-container{
+    color: #1a3c55;
     border: 1px solid #DDDDDD;
     display: inline-block;
     border-radius: 6px;
@@ -7,6 +8,7 @@
         border-collapse:collapse;
         border-spacing: 0; 
         position: relative;
+        height: 100%;
         a{
             text-decoration: none;
             color: #0074D9;
@@ -18,23 +20,25 @@
         thead, tbody, tfoot{
             tr{            
                 th, td{
-                    text-align: center;
-                    padding-left: 0.5rem;
-                    padding-right: 0.5rem;
+                    text-align: left;
+                    padding-right: 2rem;
                     min-width: 50px;
                     max-width: 300px;
                     white-space: nowrap; 
                     overflow: hidden; 
-                    text-overflow:ellipsis;
-                } 
+                }
             }
         }
-        thead, tfoot{
-            background-color: #f7f7f7;
+        thead, tfoot{   
+            z-index: 2;                             
+            th, td{
+                padding-left: 1.5rem;
+            }
+            background-color: #f3f6fa;
         }
         thead{   
             top: 0;          
-            tr{   
+            tr{
                 th, td{
                     i{
                         display: inline-block;
@@ -53,11 +57,11 @@
                     border: none;
                     outline: none;
                     border: 1px solid #DDDDDD;
-                    border-bottom: 2px solid #000000;
+                    border-bottom: 2px solid #1a3c55;
                 }
                 input[type=text]:focus, select:focus{
                     background-color: #FFFFFF;
-                    border-bottom-color: #2ECC40;
+                    border-bottom-color: #18cb81;
                 }
             } 
             tr:first-child{
@@ -122,7 +126,7 @@
                         position: absolute;
                         right: 8px;                            
                         width: 8px;
-                        height: 8px;  
+                        height: 8px; 
                     }  
                     i:first-child{
                         mask: url("/assets/icons/sort.svg");
@@ -143,10 +147,7 @@
                     padding-bottom: 0.5rem; 
                 }
                 input[type=text]{                
-                    width: 100%; 
-                    box-sizing: border-box;
-                    -webkit-box-sizing:border-box;
-                    -moz-box-sizing: border-box;
+                    width: 100%;
                 }
             } 
         }
@@ -170,11 +171,13 @@
                 border-top: 1px solid #DDDDDD;
                 border-bottom: 1px solid #DDDDDD;
                 vertical-align: middle;
-                padding: 0.2rem;
+                padding: 0.2rem;                
                 td{
                     padding: 0.5rem;
+                    padding-left: 1.5rem;
+                    text-overflow:ellipsis;
                 }
-                td:last-child{
+                td{
                     a, button{                        
                         cursor: pointer;
                     }
@@ -185,8 +188,7 @@
                         padding-top: 0.2rem;
                         padding-bottom: 0.2rem;
                         border-radius: 5px;                        
-                        margin-left: 0.4rem;
-                        margin-right: 0.4rem;
+                        margin-right: 0.6rem;
                     }                     
                     div{
                         height: 100%;
@@ -201,6 +203,8 @@
                         padding-top: 0.1rem;
                         padding-bottom: 0.1rem;
                         border-radius: 5px;
+                        background-color: #dae8f5;
+                        color: #1a3c55;
                     }
                     ul{
                         padding-left: 20px;
@@ -226,7 +230,7 @@
     }
     
     .k-bg-primary{
-        background-color: #007495;
+        background-color: #777e80;
         color: #FFFFFF;
     }
 
@@ -253,7 +257,7 @@
 
     .k-bg-warning{
         background-color: #f3cb12;
-        color: #000000;
+        color: #1a3c55;
     }
 
     .k-color-warning{
@@ -302,4 +306,22 @@
     .k-border-light{
         border: solid 1px #dae8f5;
     }
+
+    
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f3f6fa; 
+}
+ 
+::-webkit-scrollbar-thumb {
+  background: #4f8bb6; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(34, 77, 107); 
 }

@@ -1,13 +1,13 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 
 interface DataTable {
   translation?: { add?: string, filter?: string, allItems?: string }
   addItem?: boolean,
   style?: any,
-  header: Array<{ name: string, type: string, order: boolean, filter: boolean, width?: number, styleClass?: { width?: number } }>,
+  header: Array<{ name?: string, type: string, order: boolean, filter: boolean, width?: number, styleClass?: { width?: number } }>,
   footer?: Array<string>,
   items: Array<{
-    id: number,
+    inputData: any,
     data: Array<{
       content: any, styleClass?: string, condition?: string
     }>
@@ -19,7 +19,8 @@ interface DataTable {
   templateUrl: './k-mylib.component.html',
   styleUrls: ['./k-mylib.component.scss']
 })
-export class KMylibComponent implements OnInit {
+
+export class KMylibComponent implements OnInit, OnChanges {
 
   //IO variables
   @Input() data: DataTable = {
@@ -37,6 +38,9 @@ export class KMylibComponent implements OnInit {
   selectedItems = new Array()
 
   constructor() { }
+
+  ngOnChanges(changes: SimpleChanges): void {
+  }
 
   ngOnInit(): void {
     //init filter table with the number of columns length
@@ -165,7 +169,7 @@ export class KMylibComponent implements OnInit {
   }
 
   changeNumberOfElementsPerPage(event: any) {
-    this.setPagination(+event?.target?.content)
+    this.setPagination(+event?.target?.value)
   }
 
   //evaluate if some condition is true
