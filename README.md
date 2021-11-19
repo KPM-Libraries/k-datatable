@@ -189,7 +189,18 @@ stickyHeader | Header sticky position | Boolean | false
 stickyFooter | Footer sticky position | Boolean | false
 textAlign | Text alignment | String (CSS text-align options) | left
 
-#### style
+#### view
+
+Option | Description | Values | Default value
+--- | --- | --- | ---
+itemsPerPage | Number of showed items per page | Number | 10
+showedItems | Number of showed items per page select options | Array<Number> | [10, 20, 30, 50, 100]
+
+
+ view: {
+      itemsPerPage: ,
+      : 
+    },
 
 
 
