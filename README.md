@@ -164,9 +164,9 @@ Then add ```<lib-k-mylib>``` component to your component HTML file
 
 ## Options
 
-## Data options
+### Data options
 
-## Translation
+#### translation
 
 Option | Description | Values
 --- | --- | --- |
