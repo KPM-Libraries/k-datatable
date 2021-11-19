@@ -44,10 +44,13 @@ export class KMylibComponent implements OnChanges {
   selectedItems = new Array()
 
   previousLength = 0
+  previousData = {}
 
   constructor() {
     setInterval(() => {
-      if (this.previousLength != this.data.items.length) {
+      //if (this.previousLength != this.data.items.length) {
+      if (JSON.stringify(this.previousData) != JSON.stringify(this.data.items)) {
+        this.previousData = [...this.data.items]
         this.previousLength = this.data.items.length
         this.items = [...this.data.items]
         this.filter()
