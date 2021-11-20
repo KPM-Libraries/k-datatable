@@ -1,4 +1,4 @@
-# K-Datatable Package
+# K-Datatable Angular Package
 
 K-datatable is an Angular package that allows you to display your JSON data in an HTML table and edit, filter, sort or display it in many pages.
 
@@ -249,7 +249,8 @@ data | Data table rows data | Array of item (see the 'item' json object section)
     value: string, // Displayed value of the date
     date: Date // Date value
   },
-  styleClass: string
+  styleClass: string,
+  condition: string
 }
 
 // for link column type
@@ -258,7 +259,8 @@ data | Data table rows data | Array of item (see the 'item' json object section)
     value: string, // Displayed value of the link
     url: Date // url value
   },
-  styleClass: string
+  styleClass: string,
+  condition: string
 }
 
 // for image column type
@@ -269,7 +271,8 @@ data | Data table rows data | Array of item (see the 'item' json object section)
     height: number, // Image height (pixels)
     alt: string, // Image alternative attribute
   },
-  styleClass: string
+  styleClass: string,
+  condition: string
 }
 
 // for buttons or mini-buttons column type
@@ -280,7 +283,8 @@ data | Data table rows data | Array of item (see the 'item' json object section)
       event: string, // Name of the event that will be triggered by clicking on the button
       styleClass: string
     }
-  ]
+  ],
+  condition: string
 }
 ```
 
