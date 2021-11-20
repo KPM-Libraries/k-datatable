@@ -25,12 +25,12 @@ interface DataTable {
 }
 
 @Component({
-  selector: 'lib-k-mylib',
-  templateUrl: './k-mylib.component.html',
-  styleUrls: ['./k-mylib.component.scss']
+  selector: 'k-datatable',
+  templateUrl: './k-datatable.component.html',
+  styleUrls: ['./k-datatable.component.scss']
 })
 
-export class KMylibComponent implements OnChanges {
+export class KDatatableComponent implements OnChanges {
 
   //IO variables
   @Input() data: DataTable = {

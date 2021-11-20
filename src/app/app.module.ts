@@ -2,21 +2,19 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { KMylibModule } from 'projects/k-mylib/src/public-api';
+import { KDatatableModule } from 'k-datatable';
 
 import { AppComponent } from './app.component';
-import { KDatatableComponent } from './components/k-datatable/k-datatable.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    KDatatableComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    KMylibModule,
-    HttpClientModule
+    HttpClientModule,
+    KDatatableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

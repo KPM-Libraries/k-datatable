@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { KMylibService } from './k-mylib.service';
+import { KDatatableService } from './k-datatable.service';
 
-describe('KMylibService', () => {
-  let service: KMylibService;
+describe('KDatatableService', () => {
+  let service: KDatatableService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(KMylibService);
+    service = TestBed.inject(KDatatableService);
   });
 
   it('should be created', () => {

@@ -8,9 +8,9 @@ describe('KDatatableComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ KDatatableComponent ]
+      declarations: [KDatatableComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

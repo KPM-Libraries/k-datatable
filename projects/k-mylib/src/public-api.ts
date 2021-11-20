@@ -1,7 +1,7 @@
 /*
- * Public API Surface of k-mylib
+ * Public API Surface of k-datatable
  */
 
-export * from './lib/k-mylib.service';
-export * from './lib/k-mylib.component';
-export * from './lib/k-mylib.module';
+export * from './lib/k-datatable.service';
+export * from './lib/k-datatable.component';
+export * from './lib/k-datatable.module';

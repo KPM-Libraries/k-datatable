@@ -2,20 +2,20 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { KMylibComponent } from './k-mylib.component';
+import { KDatatableComponent } from './k-datatable.component';
 
 
 
 @NgModule({
   declarations: [
-    KMylibComponent
+    KDatatableComponent
   ],
   imports: [
     BrowserModule,
     FormsModule
   ],
   exports: [
-    KMylibComponent
+    KDatatableComponent
   ]
 })
-export class KMylibModule { }
+export class KDatatableModule { }
