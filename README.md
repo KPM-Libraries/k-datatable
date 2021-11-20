@@ -4,9 +4,15 @@ K-datatable is an Angular package that allows you to display your JSON data in a
 
 ## Demo
 
-<a href="http://localhost:4200/">Stackblitz</a>
+### Live preview
+
+<a href="https://k-datatabe.netlify.app/">Netlify</a>
 
 <img style="width: 100%;" src="src/assets/images/preview.png" />
+
+### Github demo source code
+
+<a href="https://github.com/AbbaciKhaled/K-Datatable-Demo">Demo source code</a>
 
 ## Install
 
