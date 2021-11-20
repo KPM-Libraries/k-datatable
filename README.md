@@ -1,4 +1,4 @@
-# K Datatable Package
+# KDatatable Package
 
 K-datatable is an Angular package that allows you to display your JSON data in an HTML table and edit, filter, sort or display it in many pages.
 
@@ -228,56 +228,51 @@ data | Data table rows data | Array of item (see the 'item' json object section)
 #### item
 
 ```ts
+// for number, text, bold, badge, email or progress column type
+{ 
+  content: string, // Cell value
+  styleClass: string // Your CSS class or K-Datatable CSS class
+}
 
-{ // for number, text, bold, badge, email or progress column type
-  content: string,
-},
-{
-  content: item?.name
-},
-{
-  content: item?.email
-},
-{
-  content: item?.status,
-  styleClass: item?.status == 'Approved' ? 'k-bg-success' : item?.status == 'Unapproved' ? 'k-bg-danger' : null
-},
-{
-  content: item?.country
-},
-{
-  content: item?.progress
-},
+// for date column type
 {
   content: {
-    value: new Date(item?.birthday).toLocaleDateString("en-En"),
-    date: new Date(item?.birthday)
-  }
-},
+    value: string, // Displayed value of the date
+    date: Date // Date value
+  },
+  styleClass: string
+}
+
+// for link column type
+{
+  content: {
+    value: string, // Displayed value of the link
+    url: Date // url value
+  },
+  styleClass: string
+}
+
+// for image column type
+{
+  content: {
+    src: string, // Url of the image
+    width: number, // Image width (pixels)
+    height: number, // Image height (pixels)
+    alt: string, // Image alternative attribute
+  },
+  styleClass: string
+}
+
+// for buttons or mini-buttons column type
 {
   content: [
     {
-      styleClass: "k-bg-warning",
-      title: "More details",
-      event: "showMore"
-    }
-  ]
-},
-{
-  content: [
-    {
-      styleClass: "fa fa-edit k-color-primary",
-      title: "Update",
-      event: "update"
-    },
-    {
-      styleClass: "fa fa-trash k-color-danger",
-      title: "Delete",
-      event: "delete"
+      title: string, // Button title
+      event: string, // Name of the event that will be triggered by clicking on the button
+      styleClass: string
     }
   ]
 }
-
 ```
 
 ## npmjs
