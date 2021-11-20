@@ -300,6 +300,6 @@ You can define your own CSS classes and use them in the styleClass parameter. In
 
 ## npmjs
 
-<a href="https://www.npmjs.com/package/k-datatable/access">npmjs</a>
+<a href="https://www.npmjs.com/package/k-datatable/access" target="_blank">npmjs</a>
 
 ## Style
