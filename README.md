@@ -174,13 +174,13 @@ Then add ```<lib-k-mylib>``` component to your component HTML file
 
 Option | Description | Values | Default value
 --- | --- | --- | ---
-translation | Text fields translation | See the 'translation' section | null
-style | CSS style of table |  See the 'style' section | null
-view | Showed items options |  See the 'view' section | null
+translation | Text fields translation | See the 'translation' section | { }
+style | CSS style of table |  See the 'style' section | { }
+view | Showed items options |  See the 'view' section | { }
 addItem | Add items option | Boolean | false
-header | Table header options | See the 'header' section | []
-footer | Name of columns in table footer | Array of String | []
-items | Table rows | Array of item options (see the 'items' section) | []
+header | Table header options | See the 'header' section | [ ]
+footer | Name of columns in table footer | Array of String | [ ]
+items | Table rows | Array of item options (see the 'items' section) | [ ]
 
 #### translation
 
