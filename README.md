@@ -6,7 +6,7 @@ K-datatable is an Angular package that allows you to display your JSON data in a
 
 ### Live preview
 
-<a href="https://k-datatabe.netlify.app/">Netlify</a>
+<a href="https://k-datatabe.netlify.app/" target="_blank">Netlify</a>
 
 <img style="width: 100%;" src="https://k-datatabe.netlify.app/assets/images/preview.gif" />
 
