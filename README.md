@@ -310,6 +310,6 @@ k-border-colorValue | Border color
 
 You can define your own CSS classes and use them in the styleClass parameter. In some cases custom classes require the use of ` ::ng-deep ` and ` !important ` options.
 
-## npmjs
+## NPM Page
 
 <a href="https://www.npmjs.com/package/k-datatable" target="_blank">npmjs</a>
