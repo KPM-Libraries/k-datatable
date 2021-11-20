@@ -4,7 +4,7 @@
         'max-width': data?.style?.width && data.style.width != 'full' ?  data.style.width + 'px' : 'auto',
         'width': data?.style?.width == 'full' ?  '100%' : 'auto',
         'overflow-x': data?.style?.overflowX ? data.style.overflowX : 'auto',
-        'text-align': data?.style?.textAlign ? data.style.textAlign : 'left'
+        'textAlign': data?.style?.textAlign ? data.style.textAlign : 'left'
     }">
     <table [ngStyle]="{
         'width': data?.style?.width == 'full' ? '100%' : 'auto'
@@ -30,6 +30,7 @@
                                 <option [ngValue]="20">20</option>
                                 <option [ngValue]="30">30</option>
                                 <option [ngValue]="50">50</option>
+                                <option [ngValue]="100">100</option>
                             </ng-container>
                             <ng-container *ngIf="data?.view?.showedItems && data?.view?.showedItems?.length">
                                 <option *ngFor="let si of data?.view?.showedItems " [ngValue]=si>{{si}}</option>
