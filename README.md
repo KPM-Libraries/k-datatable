@@ -174,13 +174,13 @@ Then add ```<lib-k-mylib>``` component to your component HTML file
 
 Option | Description | Values | Default value
 --- | --- | --- | ---
-translation | Text fields translation | See the 'translation' section | 
-style | CSS style of table |  See the 'style' section | 
-view | Showed items options |  See the 'view' section | 
+translation | Text fields translation | See the 'translation' section | null
+style | CSS style of table |  See the 'style' section | null
+view | Showed items options |  See the 'view' section | null
 addItem | Add items option | Boolean | false
-header | Table header options | See the 'header' section | 
-footer | Name of columns in table footer | Array of String | 
-items | Table rows | Array of item options (see the 'items' section) | 
+header | Table header options | See the 'header' section | []
+footer | Name of columns in table footer | Array of String | []
+items | Table rows | Array of item options (see the 'items' section) | []
 
 #### translation
 
@@ -215,10 +215,10 @@ showedItems | Number of showed items per page select options | Array of Number |
 ### Header options
 Option | Description | Values | Default value
 --- | --- | --- | ---
-name | Name of column | String | 
+name | Name of column | String | Empty
 type | Type of column data | Enumerate | ['number', 'text', 'bold', 'badge', 'date', 'email', 'link', 'progress', 'image', 'buttons', 'mini-buttons']
-Filter | Apply filter in column | Boolean | 
-Order | Sort data by column data | Boolean | 
+Filter | Apply filter in column | Boolean | false
+Order | Sort data by column data | Boolean | false
 Width | Column width | Number (pixels) | auto
 
 ### Items options
