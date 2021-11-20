@@ -285,14 +285,12 @@ k-border-colorValue | Border color
 
 ### Colors
 
-Color | Value
---- | ---
-primary | Color
-success | ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) `#f03c15`
-warning | Border color
-danger | Border color
-dark | Border color
-light | Border color
+- primary ![#007495](https://via.placeholder.com/15/007495/000000?text=+)
+- success ![#18cb81](https://via.placeholder.com/15/18cb81/000000?text=+)
+- warning ![#f3cb12](https://via.placeholder.com/15/f3cb12/000000?text=+)
+- danger ![#cc3f52](https://via.placeholder.com/15/cc3f52/000000?text=+)
+- dark ![#1a3c55](https://via.placeholder.com/15/1a3c55/000000?text=+)
+- light ![#dae8f5](https://via.placeholder.com/15/dae8f5/000000?text=+)
 
 ## npmjs
 
