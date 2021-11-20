@@ -232,6 +232,7 @@ Option | Description | Values
 --- | --- | ---
 inputData | Input data that will be retrieved in variable outputData when an event is triggered from data table. | Any
 data | Data table rows data | Array of item (see the 'item' json object section)
+condition | Row display condition | String (Value instance example : "columns[0].content != 'Lorum'")
 
 #### item
 
