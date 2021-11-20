@@ -239,7 +239,7 @@ data | Data table rows data | Array of item (see the 'item' json object section)
 // for number, text, bold, badge, email or progress column type
 { 
   content: string, // Cell value
-  styleClass: string // Your CSS class or K-Datatable CSS class,
+  styleClass: string, // Your CSS class or K-Datatable CSS class,
   condition: string // Column display condition (Value instance example : "columns[0].content != 'Lorum'")
 }
 
