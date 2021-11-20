@@ -78,11 +78,11 @@
                             margin-right: 0.3rem;
                         }  
                         i:first-child{
-                            mask: url("/assets/icons/plus.svg");
+                            mask: url("../assets/icons/plus.svg");
                             mask-size: 100% 100%;
                         }    
                         i:nth-child(2){
-                            mask: url("/assets/icons/filter.svg");
+                            mask: url("../assets/icons/filter.svg");
                             mask-size: 100% 100%;
                         } 
                     }
@@ -102,11 +102,11 @@
                             margin-right: 0.2rem;
                         }  
                         i:nth-last-child(3){
-                            mask: url("/assets/icons/arrow.svg");
+                            mask: url("../assets/icons/arrow.svg");
                             mask-size: 100% 100%;
                         }    
                         i:last-child{
-                            mask: url("/assets/icons/arrow.svg");
+                            mask: url("../assets/icons/arrow.svg");
                             transform: scaleX(-1);
                             mask-size: 100% 100%;
                         } 
@@ -128,12 +128,12 @@
                         height: 8px; 
                     }  
                     i:first-child{
-                        mask: url("/assets/icons/sort.svg");
+                        mask: url("../assets/icons/sort.svg");
                         bottom: 8px;
                         mask-size: 100% 100%;
                     }    
                     i:nth-child(2){
-                        mask: url("/assets/icons/sort.svg");
+                        mask: url("../assets/icons/sort.svg");
                         transform: scaleY(-1);
                         top: 2px;
                         mask-size: 100% 100%;

@@ -123,7 +123,7 @@ export class AppComponent implements OnInit {
         },
         data: [
           {
-            content: item?.reference,
+            content: item?.reference
           },
           {
             content: item?.name

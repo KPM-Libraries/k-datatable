@@ -21,7 +21,8 @@ interface DataTable {
     data: Array<{
       content: any, styleClass?: string, condition?: string
     }>
-  }>
+  }>,
+  condition?: string
 }
 
 @Component({
@@ -59,7 +60,8 @@ export class KDatatableComponent implements OnChanges {
         this.previousData = [...this.data.items]
         this.previousLength = this.data.items.length
         this.items = [...this.data.items]
-        this.filter()
+        if (JSON.stringify(this.previousData) != JSON.stringify([]))
+          this.filter()
       }
     }, 100);
   }
@@ -71,7 +73,7 @@ export class KDatatableComponent implements OnChanges {
     if (changes.data.isFirstChange()) {
 
       //init filter table with the number of columns length
-      this.filterTable = new Array(this.data?.header?.length)
+      this.filterTable = new Array(this.data.header.length)
 
       //init current sort status
       this.sortStatus = {
@@ -81,7 +83,7 @@ export class KDatatableComponent implements OnChanges {
       }
 
       //init pagination
-      let elementsPerPage = this.data?.view?.itemsPerPage ? this.data.view.itemsPerPage : this.data?.view?.showedItems && this.data?.view?.showedItems[0] ? this.data?.view?.showedItems[0] : 10
+      let elementsPerPage = this.data?.view?.itemsPerPage ? this.data.view.itemsPerPage : this.data?.view?.showedItems && this.data?.view?.showedItems[0] ? this.data.view.showedItems[0] : 10
       this.pagination = {
         elementsPerPage: elementsPerPage,
         current: 1,
@@ -204,7 +206,7 @@ export class KDatatableComponent implements OnChanges {
 
   //evaluate if some condition is true
   evalCondition(condition: string, index: number) {
-    condition = condition.split("fields[").join("this.data.items[index].data[")
+    condition = condition.split("columns[").join("this.items.slice((this.pagination.current - 1) * this.pagination.elementsPerPage, this.pagination.elementsPerPage != -1 ? this.pagination.current * this.pagination.elementsPerPage : this.items?.length)[index].data[")
     return eval(condition)
   }
 
