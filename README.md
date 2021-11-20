@@ -79,24 +79,24 @@ export class AppComponent implements OnInit {
       {
         name: "Reference",
         type: "number",
-        order: true,
+        sort: true,
         filter: false
       },
       {
         name: "Name",
         type: "text",
-        order: false,
+        sort: false,
         filter: true
       },
       {
         name: "Created at",
         type: "date",
-        order: true,
+        sort: true,
         filter: true
       },
       {
         type: "buttons",
-        order: false,
+        sort: false,
         filter: false
       }
     ],
@@ -217,9 +217,9 @@ Option | Description | Values | Default value
 --- | --- | --- | ---
 name | Name of column | String | Empty
 type | Type of column data | Enumerate | ['number', 'text', 'bold', 'badge', 'date', 'email', 'link', 'progress', 'image', 'buttons', 'mini-buttons']
-Filter | Apply filter in column | Boolean | false
-Order | Sort data by column data | Boolean | false
-Width | Column width | Number (pixels) | auto
+filter | Apply filter in column | Boolean | false
+sort | Sort data by column data | Boolean | false
+width | Column width | Number (pixels) | auto
 
 ### Items options
 Option | Description | Values
