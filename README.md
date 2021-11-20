@@ -1,12 +1,18 @@
-# K-Datatable Package
+# K-Datatable Angular Package
 
 K-datatable is an Angular package that allows you to display your JSON data in an HTML table and edit, filter, sort or display it in many pages.
 
 ## Demo
 
-<a href="http://localhost:4200/">Stackblitz</a>
+### Live preview
 
-<img style="width: 100%;" src="src/assets/images/preview.png" />
+<a href="https://k-datatabe.netlify.app/" target="_blank">Netlify</a>
+
+<img style="width: 100%;" src="https://k-datatabe.netlify.app/assets/images/preview.gif" />
+
+### Github demo source code
+
+<a href="https://github.com/AbbaciKhaled/K-Datatable-Demo">Demo source code</a>
 
 ## Install
 
@@ -14,7 +20,7 @@ To install this library with npm, run below command:
 
 `npm k-datatable`
 
-Then import KMylibModule module in your app.module.ts
+Then import KDatatableModule module in your app.module.ts
 
 ```ts
 import { KDatatableModule } from 'k-datatable';
@@ -113,7 +119,7 @@ export class AppComponent implements OnInit {
         inputData: item,
         data: [
           {
-            content: item?.reference,
+            content: item?.reference
           },
           {
             content: item?.name
@@ -226,6 +232,7 @@ Option | Description | Values
 --- | --- | ---
 inputData | Input data that will be retrieved in variable outputData when an event is triggered from data table. | Any
 data | Data table rows data | Array of item (see the 'item' json object section)
+condition | Row display condition | String (Value instance example : "columns[0].content != 'Lorum'")
 
 #### item
 
@@ -233,7 +240,8 @@ data | Data table rows data | Array of item (see the 'item' json object section)
 // for number, text, bold, badge, email or progress column type
 { 
   content: string, // Cell value
-  styleClass: string // Your CSS class or K-Datatable CSS class
+  styleClass: string, // Your CSS class or K-Datatable CSS class,
+  condition: string // Column display condition (Value instance example : "columns[0].content != 'Lorum'")
 }
 
 // for date column type
@@ -242,7 +250,8 @@ data | Data table rows data | Array of item (see the 'item' json object section)
     value: string, // Displayed value of the date
     date: Date // Date value
   },
-  styleClass: string
+  styleClass: string,
+  condition: string
 }
 
 // for link column type
@@ -251,7 +260,8 @@ data | Data table rows data | Array of item (see the 'item' json object section)
     value: string, // Displayed value of the link
     url: Date // url value
   },
-  styleClass: string
+  styleClass: string,
+  condition: string
 }
 
 // for image column type
@@ -262,7 +272,8 @@ data | Data table rows data | Array of item (see the 'item' json object section)
     height: number, // Image height (pixels)
     alt: string, // Image alternative attribute
   },
-  styleClass: string
+  styleClass: string,
+  condition: string
 }
 
 // for buttons or mini-buttons column type
@@ -273,7 +284,8 @@ data | Data table rows data | Array of item (see the 'item' json object section)
       event: string, // Name of the event that will be triggered by clicking on the button
       styleClass: string
     }
-  ]
+  ],
+  condition: string
 }
 ```
 
@@ -298,8 +310,6 @@ k-border-colorValue | Border color
 
 You can define your own CSS classes and use them in the styleClass parameter. In some cases custom classes require the use of ` ::ng-deep ` and ` !important ` options.
 
-## npmjs
+## NPM Page
 
-<a href="https://www.npmjs.com/package/k-datatable/access" target="_blank">npmjs</a>
-
-## Style
+<a href="https://www.npmjs.com/package/k-datatable" target="_blank">npmjs</a>
