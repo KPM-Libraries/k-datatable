@@ -275,7 +275,7 @@ data | Data table rows data | Array of item (see the 'item' json object section)
 }
 ```
 
-## CSS Class
+## CSS classes
 
 Class | Description
 --- | ---
@@ -291,6 +291,8 @@ k-border-colorValue | Border color
 - ![#cc3f52](https://via.placeholder.com/15/cc3f52/000000?text=+) danger
 - ![#1a3c55](https://via.placeholder.com/15/1a3c55/000000?text=+) dark
 - ![#dae8f5](https://via.placeholder.com/15/dae8f5/000000?text=+) light
+
+## Custom CSS classes
 
 You can define your own CSS classes and use them in the styleClass parameter. In some cases custom classes require the use of ` ::ng-deep ` and ` !important ` options.
 
