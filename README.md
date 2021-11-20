@@ -275,6 +275,25 @@ data | Data table rows data | Array of item (see the 'item' json object section)
 }
 ```
 
+## CSS Class
+
+Class | Description
+--- | ---
+k-color-colorValue | Color
+k-bg-colorValue | Background color
+k-border-colorValue | Border color
+
+### Colors
+
+Color | Value
+--- | ---
+primary | Color
+success | ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) `#f03c15`
+warning | Border color
+danger | Border color
+dark | Border color
+light | Border color
+
 ## npmjs
 
 <a href="http://localhost:4200/">npmjs</a>
