@@ -17,7 +17,7 @@ To install this library with npm, run below command:
 Then import KMylibModule module in your app.module.ts
 
 ```ts
-import { KMylibModule } from 'projects/k-mylib/src/public-api';
+import { KDatatableModule } from 'k-datatable';
 
 @NgModule({
   declarations: [
@@ -25,7 +25,7 @@ import { KMylibModule } from 'projects/k-mylib/src/public-api';
   ],
   imports: [
     ...
-    KMylibModule,
+    KDatatableModule,
     ...
   ],
   providers: [],
@@ -162,10 +162,10 @@ export class AppComponent implements OnInit {
 }
 ```
 
-Then add ```<lib-k-mylib>``` component to your component HTML file
+Then add ```<k-datatable>``` component to your component HTML file
   
 ```html
-<lib-k-mylib [data]="data" (event)="event($event)"></lib-k-mylib>
+<k-datatable [data]="data" (event)="event($event)"></k-datatable>
 ```
 
 ## Options
@@ -300,6 +300,6 @@ You can define your own CSS classes and use them in the styleClass parameter. In
 
 ## npmjs
 
-<a href="http://localhost:4200/">npmjs</a>
+<a href="https://www.npmjs.com/package/k-datatable/access" target="_blank">npmjs</a>
 
 ## Style
