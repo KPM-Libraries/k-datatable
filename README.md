@@ -10,7 +10,7 @@ K-datatable is an Angular package that allows you to display your JSON data in a
 
 <img style="width: 100%;" src="https://k-datatabe.netlify.app/assets/images/preview.gif" />
 
-### Github demo source code
+### GitHub demo source code
 
 <a href="https://github.com/AbbaciKhaled/K-Datatable-Demo">Demo source code</a>
 
