@@ -6,7 +6,7 @@ K-datatable is an Angular package that allows you to display your JSON data in a
 
 <a href="http://localhost:4200/">Stackblitz</a>
 
-<img style="width: 100%;" src="assets/images/preview.png" />
+<img style="width: 100%;" src="src/assets/images/preview.png" />
 
 ## Install
 
