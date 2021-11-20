@@ -14,7 +14,7 @@ To install this library with npm, run below command:
 
 `npm k-datatable`
 
-Then import KMylibModule module in your app.module.ts
+Then import KDatatableModule module in your app.module.ts
 
 ```ts
 import { KDatatableModule } from 'k-datatable';
