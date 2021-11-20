@@ -1,4 +1,4 @@
-<div id="k-table-container" *ngIf="data && filterTable  && orderStatus && pagination" [ngStyle]="{
+<div id="k-table-container" *ngIf="data && filterTable  && sortStatus && pagination" [ngStyle]="{
         'max-height': data?.style?.height ?  data.style.height == 'full' ? '100vh' : data.style.height + 'px' : 'auto',
         'overflow-y': data?.style?.overflowY ? data.style.overflowY : 'auto',
         'max-width': data?.style?.width && data.style.width != 'full' ?  data.style.width + 'px' : 'auto',
@@ -58,11 +58,11 @@
                 <th *ngFor="let header of data?.header; let i=index"
                     [ngStyle]="{'width': header?.width ? header.width + 'px' : 'auto' }">
                     {{header?.name}}
-                    <ng-container *ngIf="header?.order">
-                        <i [ngClass]="{'k-icon-active': orderStatus.index==i && orderStatus.type =='DESC'}"
-                            (click)="order(i, 'DESC')"></i>
-                        <i [ngClass]="{'k-icon-active': orderStatus.index==i && orderStatus.type =='ASC'}"
-                            (click)="order(i, 'ASC')"></i>
+                    <ng-container *ngIf="header?.sort">
+                        <i [ngClass]="{'k-icon-active': sortStatus.index==i && sortStatus.type =='DESC'}"
+                            (click)="sort(i, 'DESC')"></i>
+                        <i [ngClass]="{'k-icon-active': sortStatus.index==i && sortStatus.type =='ASC'}"
+                            (click)="sort(i, 'ASC')"></i>
                     </ng-container>
                 </th>
             </tr>

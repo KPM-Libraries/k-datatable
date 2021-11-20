@@ -32,62 +32,62 @@ export class AppComponent implements OnInit {
       {
         name: "Reference",
         type: "number",
-        order: true,
+        sort: true,
         filter: true,
         width: 60
       },
       {
         name: "Name",
         type: "text",
-        order: true,
+        sort: true,
         filter: true,
         width: 120
       },
       {
         name: "Email",
         type: "email",
-        order: true,
+        sort: true,
         filter: true,
         width: 200
       },
       {
         name: "Status",
         type: "badge",
-        order: true,
+        sort: true,
         filter: true,
         width: 80
       },
       {
         name: "Country",
         type: "bold",
-        order: true,
+        sort: true,
         filter: true,
         width: 200
       },
       {
         name: "Progress",
         type: "progress",
-        order: true,
+        sort: true,
         filter: true,
         width: 180
       },
       {
         name: "Birthday",
         type: "date",
-        order: true,
+        sort: true,
         filter: true,
         width: 80
       },
       {
         name: "More details",
         type: "buttons",
-        order: false,
+        sort: false,
         filter: false,
         width: 80
       },
       {
         type: "mini-buttons",
-        order: false,
+        sort: false,
         filter: false,
         width: 50
       }

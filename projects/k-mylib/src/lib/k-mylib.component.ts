@@ -14,7 +14,7 @@ interface DataTable {
     itemsPerPage?: number,
     showedItems?: Array<number>
   }
-  header: Array<{ name?: string, type: string, order: boolean, filter: boolean, width?: number, styleClass?: { width?: number } }>,
+  header: Array<{ name?: string, type: string, sort?: boolean, filter?: boolean, width?: number, styleClass?: { width?: number } }>,
   footer?: Array<string>,
   items: Array<{
     inputData: any,
@@ -45,7 +45,7 @@ export class KMylibComponent implements OnChanges {
   items: any[] = []
   filterTable: any
   isFilter: boolean = false
-  orderStatus: any
+  sortStatus: any
   pagination: any
   selectedItems = new Array()
 
@@ -73,8 +73,8 @@ export class KMylibComponent implements OnChanges {
       //init filter table with the number of columns length
       this.filterTable = new Array(this.data?.header?.length)
 
-      //init current order status
-      this.orderStatus = {
+      //init current sort status
+      this.sortStatus = {
         index: -1,
         type: '',
         ascOrDescTable: new Array<number>()
@@ -103,8 +103,8 @@ export class KMylibComponent implements OnChanges {
   //filter rows
   filter(): void {
     this.items = [...this.data.items]
-    if (this.orderStatus.index != -1)
-      this.order(this.orderStatus.index, this.orderStatus.type, true)
+    if (this.sortStatus.index != -1)
+      this.sort(this.sortStatus.index, this.sortStatus.type, true)
 
     let i = 0
     while (i < this.items.length)
@@ -156,32 +156,32 @@ export class KMylibComponent implements OnChanges {
     return false
   }
 
-  //order rows
-  order(index: number, type: string, force?: boolean): void {
-    if (index != this.orderStatus.index || type != this.orderStatus.type || force) {
-      this.orderStatus.index = index
-      this.orderStatus.type = type
-      this.orderStatus.ascOrDescTable = type == 'ASC' ? [-1, 1] : type == 'DESC' ? [1, -1] : []
-      if (this.orderStatus.ascOrDescTable.length > 0)
+  //sort rows
+  sort(index: number, type: string, force?: boolean): void {
+    if (index != this.sortStatus.index || type != this.sortStatus.type || force) {
+      this.sortStatus.index = index
+      this.sortStatus.type = type
+      this.sortStatus.ascOrDescTable = type == 'ASC' ? [-1, 1] : type == 'DESC' ? [1, -1] : []
+      if (this.sortStatus.ascOrDescTable.length > 0)
         this.items = this.items.sort((elt1: any, elt2: any): number => {
           if (typeof elt1.data[index]?.content != typeof elt2.data[index]?.content)
             return -1
           switch (this.data.header[index]?.type) {
             case 'date':
-              return (elt1.data[index]?.content?.date.getTime() - elt2.data[index]?.content?.date.getTime()) * this.orderStatus.ascOrDescTable[1]
+              return (elt1.data[index]?.content?.date.getTime() - elt2.data[index]?.content?.date.getTime()) * this.sortStatus.ascOrDescTable[1]
             case 'link':
-              return elt1.data[index]?.content?.value.toString().toLowerCase() == elt2.data[index]?.content?.value.toString().toLowerCase() ? 0 : elt1.data[index]?.content?.value.toString().toLowerCase() < elt2.data[index]?.content?.value.toString().toLowerCase() ? this.orderStatus.ascOrDescTable[0] : this.orderStatus.ascOrDescTable[1]
+              return elt1.data[index]?.content?.value.toString().toLowerCase() == elt2.data[index]?.content?.value.toString().toLowerCase() ? 0 : elt1.data[index]?.content?.value.toString().toLowerCase() < elt2.data[index]?.content?.value.toString().toLowerCase() ? this.sortStatus.ascOrDescTable[0] : this.sortStatus.ascOrDescTable[1]
             case 'list':
-              return elt1.data[index]?.content.join('').toLowerCase() == elt2.data[index]?.content.join('').toLowerCase() ? 0 : elt1.data[index]?.content.join('').toLowerCase() < elt2.data[index]?.content.join('').toLowerCase() ? this.orderStatus.ascOrDescTable[0] : this.orderStatus.ascOrDescTable[1]
+              return elt1.data[index]?.content.join('').toLowerCase() == elt2.data[index]?.content.join('').toLowerCase() ? 0 : elt1.data[index]?.content.join('').toLowerCase() < elt2.data[index]?.content.join('').toLowerCase() ? this.sortStatus.ascOrDescTable[0] : this.sortStatus.ascOrDescTable[1]
             case 'image':
-              return elt1.data[index]?.content?.src.toString().toLowerCase() == elt2.data[index]?.content?.src.toString().toLowerCase() ? 0 : elt1.data[index]?.content?.src.toString().toLowerCase() < elt2.data[index]?.content?.src.toString().toLowerCase() ? this.orderStatus.ascOrDescTable[0] : this.orderStatus.ascOrDescTable[1]
+              return elt1.data[index]?.content?.src.toString().toLowerCase() == elt2.data[index]?.content?.src.toString().toLowerCase() ? 0 : elt1.data[index]?.content?.src.toString().toLowerCase() < elt2.data[index]?.content?.src.toString().toLowerCase() ? this.sortStatus.ascOrDescTable[0] : this.sortStatus.ascOrDescTable[1]
             default: //all other types
-              return elt1.data[index]?.content.toString().toLowerCase() == elt2.data[index]?.content.toString().toLowerCase() ? 0 : elt1.data[index]?.content.toString().toLowerCase() < elt2.data[index]?.content.toString().toLowerCase() ? this.orderStatus.ascOrDescTable[0] : this.orderStatus.ascOrDescTable[1]
+              return elt1.data[index]?.content.toString().toLowerCase() == elt2.data[index]?.content.toString().toLowerCase() ? 0 : elt1.data[index]?.content.toString().toLowerCase() < elt2.data[index]?.content.toString().toLowerCase() ? this.sortStatus.ascOrDescTable[0] : this.sortStatus.ascOrDescTable[1]
           }
         })
     } else {
-      this.orderStatus.index = -1
-      this.orderStatus.type = ''
+      this.sortStatus.index = -1
+      this.sortStatus.type = ''
       this.filter()
     }
     this.setPagination()
