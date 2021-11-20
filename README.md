@@ -292,7 +292,7 @@ k-border-colorValue | Border color
 - ![#1a3c55](https://via.placeholder.com/15/1a3c55/000000?text=+) dark
 - ![#dae8f5](https://via.placeholder.com/15/dae8f5/000000?text=+) light
 
-You can define your own CSS classes and use them in the styleClass parameter. In some cases custom classes require the use of ```css ::ng-deep ``` and ```css !important ``` options.
+You can define your own CSS classes and use them in the styleClass parameter. In some cases custom classes require the use of ` ::ng-deep ` and ` !important ` options.
 
 ## npmjs
 
