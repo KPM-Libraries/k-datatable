@@ -1,4 +1,4 @@
-# KDatatable Package
+# K-Datatable Package
 
 K-datatable is an Angular package that allows you to display your JSON data in an HTML table and edit, filter, sort or display it in many pages.
 
