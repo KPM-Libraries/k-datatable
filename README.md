@@ -283,7 +283,7 @@ k-color-colorValue | Color
 k-bg-colorValue | Background color
 k-border-colorValue | Border color
 
-### Colors
+### Color values
 
 - ![#007495](https://via.placeholder.com/15/007495/000000?text=+) primary 
 - ![#18cb81](https://via.placeholder.com/15/18cb81/000000?text=+) success
