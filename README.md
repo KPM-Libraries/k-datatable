@@ -6,6 +6,8 @@ K-datatable is an Angular package that allows you to display your JSON data in a
 
 <a href="http://localhost:4200/">Stackblitz</a>
 
+<img style="width: 100%;" src="src/assets/images/preview.png" />
+
 ## Install
 
 To install this library with npm, run below command:
@@ -77,24 +79,24 @@ export class AppComponent implements OnInit {
       {
         name: "Reference",
         type: "number",
-        order: true,
+        sort: true,
         filter: false
       },
       {
         name: "Name",
         type: "text",
-        order: false,
+        sort: false,
         filter: true
       },
       {
         name: "Created at",
         type: "date",
-        order: true,
+        sort: true,
         filter: true
       },
       {
         type: "buttons",
-        order: false,
+        sort: false,
         filter: false
       }
     ],
@@ -172,13 +174,13 @@ Then add ```<lib-k-mylib>``` component to your component HTML file
 
 Option | Description | Values | Default value
 --- | --- | --- | ---
-translation | Text fields translation | See the 'translation' section | 
-style | CSS style of table |  See the 'style' section | 
-view | Showed items options |  See the 'view' section | 
+translation | Text fields translation | See the 'translation' section | { }
+style | CSS style of table |  See the 'style' section | { }
+view | Showed items options |  See the 'view' section | { }
 addItem | Add items option | Boolean | false
-header | Table header options | See the 'header' section | 
-footer | Name of columns in table footer | Array of String | 
-items | Table rows | Array of item options (see the 'items' section) | 
+header | Table header options | See the 'header' section | [ ]
+footer | Name of columns in table footer | Array of String | [ ]
+items | Table rows | Array of item options (see the 'items' section) | [ ]
 
 #### translation
 
@@ -213,11 +215,11 @@ showedItems | Number of showed items per page select options | Array of Number |
 ### Header options
 Option | Description | Values | Default value
 --- | --- | --- | ---
-name | Name of column | String | 
+name | Name of column | String | Empty
 type | Type of column data | Enumerate | ['number', 'text', 'bold', 'badge', 'date', 'email', 'link', 'progress', 'image', 'buttons', 'mini-buttons']
-Filter | Apply filter in column | Boolean | 
-Order | Sort data by column data | Boolean | 
-Width | Column width | Number (pixels) | auto
+filter | Apply filter in column | Boolean | false
+sort | Sort data by column data | Boolean | false
+width | Column width | Number (pixels) | auto
 
 ### Items options
 Option | Description | Values
