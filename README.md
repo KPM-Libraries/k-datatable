@@ -18,7 +18,7 @@ K-datatable is an Angular package that allows you to display your JSON data in a
 
 To install this library with npm, run below command:
 
-`npm k-datatable`
+`npm i k-datatable`
 
 Then import KDatatableModule module in your app.module.ts
 
