@@ -1,6 +1,6 @@
 {
   "name": "k-datatable",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "license": "MIT",
   "description": "K-datatable is an Angular package that allows you to display your JSON data in an HTML table and edit, filter, sort or display it in many pages.",
   "keywords": [
